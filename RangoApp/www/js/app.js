@@ -1,16 +1,16 @@
-// Ionic Starter App
+// Ionic iniciantes App
 
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.services' is found in services.js
-// 'starter.controllers' is found in controllers.js
+// Angular.module é um lugar global para criar, registrar e recuperar módulos angulares
+// 'Arranque' é o nome deste exemplo módulo angular (também definido em um <body> em atributo index.html)
+// O segundo parâmetro é um array de "exige"
+// 'Starter.services' é encontrado em services.js
+// 'Starter.controllers' é encontrado em controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
+    // Ocultar o bar acessório por padrão (remover este para mostrar a barra de acessórios acima do teclado
+    // Para entradas de formulário)
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     }
@@ -23,20 +23,20 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
-  // Ionic uses AngularUI Router which uses the concept of states
-  // Learn more here: https://github.com/angular-ui/ui-router
-  // Set up the various states which the app can be in.
-  // Each state's controller can be found in controllers.js
+    // Ionic utiliza AngularUI Router que utiliza o conceito de estados
+   // Saiba mais aqui: https://github.com/angular-ui/ui-router
+   // Configure os vários estados que o app pode estar.
+   // Controlador de cada estado podem ser encontrados em controllers.js
   $stateProvider
 
-  // setup an abstract state for the tabs directive
+  // configuração de um estado abstrato para a directiva tabs
     .state('tab', {
     url: "/tab",
     abstract: true,
     templateUrl: "templates/tabs.html"
   })
 
-  // Each tab has its own nav history stack:
+  //Cada guia tem sua própria pilha de histórico de navegação:
 
   .state('tab.dash', {
     url: '/dash',
@@ -96,7 +96,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   });
 
-  // if none of the above states are matched, use this as the fallback
+  //se nenhum dos estados acima são correspondidos, use isso como o fallback
   $urlRouterProvider.otherwise('/tab/dash');
 
 });
