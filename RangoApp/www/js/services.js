@@ -1,9 +1,9 @@
 angular.module('starter.services', [])
 
 .factory('Chats', function() {
-  // Might use a resource here that returns a JSON array
+  // Pode usar um recurso aqui que retorna uma matriz JSON
 
-  // Some fake testing data
+  // Alguns dados de testes falso
   var chats = [{
     id: 0,
     name: 'Ben Sparrow',
@@ -50,12 +50,12 @@ angular.module('starter.services', [])
 })
 
 /**
- * A simple example service that returns some data.
+ * Um serviço simples exemplo que retorna alguns dados.
  */
 .factory('Friends', function() {
-  // Might use a resource here that returns a JSON array
+  // Pode usar um recurso aqui que retorna uma matriz JSON
 
-  // Some fake testing data
+  // Alguns dados de testes falso
   var friends = [{
     id: 0,
     name: 'Ben Sparrow',
@@ -89,7 +89,7 @@ angular.module('starter.services', [])
       return friends;
     },
     get: function(friendId) {
-      // Simple index lookup
+      // Consulta de índice Simples
       return friends[friendId];
     }
   }
