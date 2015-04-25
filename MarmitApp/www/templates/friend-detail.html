@@ -1,0 +1,15 @@
+<!--
+Este modelo de cargas para o 'tab.friend-detalhe' Estado (app.js)
+'amigo' é uma variável $ escopo criado no controlador FriendsCtrl (controllers.js)
+O FriendsCtrl puxa dados do serviço de Amigos (service.js)
+O serviço Amigos retorna uma matriz de dados amigo
+-->
+<ion-view view-title="{{friend.name}}">
+  <ion-content class="padding">
+    <img ng-src="{{friend.face}}" style="width: 64px; height: 64px">
+    <h3>Notes</h3>
+    <p>
+      {{friend.notes}}
+    </p>
+  </ion-content>
+</ion-view>
