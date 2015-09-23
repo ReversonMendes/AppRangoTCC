@@ -93,7 +93,7 @@
                                             }
                                            ?>
                                        </td>
-                                       <td><a href="alterar_usuario.php?id=<?=$usuario['idusuario']?>">Alterar</a></td>
+                                       <td><a href="alterar_usuario.php?id=<?=$usuario['idusuario']?>"><i class="fa fa-edit fa-fw"></i> </a></td>
                                     </tr>
                                  </tbody>
                                  <?php
