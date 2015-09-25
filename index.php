@@ -1,4 +1,4 @@
 <?php
-$local = "login.php";
+$local = "view/login.php";
 header("Location: $local");
 ?>
