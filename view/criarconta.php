@@ -24,10 +24,10 @@
     <script src="../js/bootstrap.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="../js/metisMenu.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="../dist/js/sb-admin-2.js"></script>
+    <script src="../js/sb-admin-2.js"></script>
 </head>
 
 <?php
@@ -44,7 +44,7 @@
                   <div class="panel-body">
                     <?php mostraAlerta("danger"); ?>
                     <?php mostraAlerta("success"); ?>
-                      <form role="form" action="../model/valida_conta.php" method="post">
+                      <form role="form" action="../model/valida_conta.php" method="post" name="conta">
                         <div class="form-group">
                            <label>Nome completo</label>
                            <input class="form-control" type="text" name="nome" required>
@@ -66,7 +66,7 @@
                            <input class="form-control" type="password" name="confirmasenha" required>
                         </div>
                         <div class="form-group">
-                          <button type="submit" class="btn btn-lg btn-success btn-block">Gravar</button>
+                          <button type="submit" class="btn btn-lg btn-success btn-block"  onClick="validarSenha()">Gravar</button>
                         </div>
                       </form>
                       <div>
@@ -80,3 +80,13 @@
         </div>
     </div>
 <?php include("rodape.php") ?>
+<script>
+function validarSenha(){
+  senha = document.conta.senha.value
+  confirmasenha = document.conta.confirmasenha.value
+  if (senha == confirmasenha)
+    alert("SENHAS IGUAIS")
+  else
+    alert("SENHAS DIFERENTES")
+}
+</script>

@@ -1,5 +1,5 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT']."/conecta.php");
+// include($_SERVER['DOCUMENT_ROOT']."/conecta.php");
 
 function listaUsuarios($conexao) {
 	$usuarios = array();
@@ -10,10 +10,9 @@ function listaUsuarios($conexao) {
 	return $usuarios;
 }
 
-function insereUsuario($conexao, $nome, $usuario, $senha, $datanascimento, $email, $ativado, $empresa) {
-	$query = "insert into usuario (nome, usuario, senha, dtnascimento, email, flaginativo, idempresa) values ('{$nome}', '{$usuario}', '{$senha}', {$datanascimento}, '{$email}',{$ativado},'{$empresa}')";
-	//return mysqli_query($conexao, $query);
-	echo($query);
+function insereUsuario($conexao, $nome, $usuario, $senha, $email, $ativado) {
+	$query = "insert into usuario (nome, usuario, senha, email, flaginativo) values ('{$nome}', '{$usuario}', '{$senha}','{$email}',{$ativado})";
+	return mysqli_query($conexao, $query);
 }
 
 function alteraUsuario($conexao, $id,  $nome, $usuario, $senha, $datanascimento, $email, $ativado) {

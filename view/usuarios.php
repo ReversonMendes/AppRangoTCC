@@ -14,7 +14,7 @@
            <?php mostraAlerta("success"); ?>
            <?php mostraAlerta("danger"); ?>
                         <div class="panel-heading">
-                           <a class="btn btn-primary" data-toggle="modal" data-target="#modalInserirUsuario"> <i class="fa fa-plus-square fa-2x"></i> </a>
+                           <a class="btn btn-primary btn-right" data-toggle="modal" data-target="#modalInserirUsuario"> <i class="fa fa-plus-square fa-2x"></i> </a>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
