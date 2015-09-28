@@ -1,5 +1,4 @@
 <?php
-include("conecta.php");
 
 function listaUsuarios($conexao) {
 	$usuarios = array();

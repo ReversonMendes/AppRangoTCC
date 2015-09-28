@@ -1,7 +1,8 @@
 <?php
 include($_SERVER['DOCUMENT_ROOT']."/controller/conecta.php");
-require_once($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_conta.php");
 include($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_login.php");
+
+require_once($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_conta.php");
 
 $nome = $_POST['nome'];
 $email = $_POST['email'];

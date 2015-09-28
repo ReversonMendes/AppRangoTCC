@@ -1,6 +1,6 @@
 <?php
 include($_SERVER['DOCUMENT_ROOT']."/controller/conecta.php");
-require_once($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_login.php");
+include($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_login.php");
 
 $login = "../view/login.php";
 $painel = "../view/painel.php";
@@ -8,6 +8,7 @@ $cadastra_empresa = "../view/empresa.php";
 
 //Busca todas as informação do usuário
 $usuario = buscaUsuario($conexao, $_POST["email"],$_POST["email"], $_POST["senha"]);
+
 //recebe a empresa do usuário
 $idempresa = $usuario['idempresa'];
 

@@ -1,6 +1,8 @@
 <?php
-require_once("funcoes_usuario.php");
-include($_SERVER['DOCUMENT_ROOT']."/funcoes_login.php");
+include($_SERVER['DOCUMENT_ROOT']."/controller/conecta.php");
+include($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_login.php");
+
+require_once($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_usuario.php");
 
 $nome = $_POST['nome'];
 $email = $_POST['email'];

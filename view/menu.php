@@ -16,7 +16,7 @@
                 <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu dropdown-user">
-                <li><a href="#"><i class="fa fa-user fa-fw"></i> Perfil do Usuário</a>
+                <li><a href="perfil.php"><i class="fa fa-user fa-fw"></i> Perfil do Usuário</a>
                 </li>
                 <li><a href="#"><i class="fa fa-gear fa-fw"></i> Configuração</a>
                 </li>

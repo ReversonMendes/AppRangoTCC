@@ -1,6 +1,9 @@
 <?php
-require_once("funcoes_cardapios.php");
-include($_SERVER['DOCUMENT_ROOT']."/funcoes_login.php");
+include($_SERVER['DOCUMENT_ROOT']."/controller/conecta.php");
+include($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_login.php");
+
+include($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_cardapios.php");
+
 $usuario = buscaIdUsuario($conexao,usuarioLogado());
 
 $nomeprato = $_POST['nomeprato'];
@@ -23,4 +26,5 @@ foreach($_POST as $field => $value) {
 // 	header("Location: cad_cardapios.php");
 // }
 
+die();
 ?>

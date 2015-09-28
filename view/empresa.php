@@ -39,10 +39,12 @@
             <div class="modal-content">
               <div class="modal-header">
                 <h4 class="modal-title">Dados da empresa</h4>
+                   <?php mostraAlerta("success"); ?>
+                   <?php mostraAlerta("danger"); ?>
               </div>
               <!-- <div class="modal-body"> -->
-                  <div class="col-lg-6">
-                    <form role="form" action="../model/valida_empresa.php" method="post">
+                <form role="form" action="../model/valida_empresa.php" method="post">
+                    <div class="col-lg-6">
                         <div class="form-group">
                             <label>Nome</label>
                             <input class="form-control" type="text" name="razao">
@@ -59,10 +61,9 @@
                             <label>Endereço</label>
                             <input class="form-control" type="text" name="endereco">
                         </div>
-                    </form>
+                    
                   </div>
                   <div class="col-lg-6">
-                    <form role="form">
                         <div class="form-group">
                             <label>Número</label>
                             <input class="form-control" type="text" name="numero">
@@ -73,24 +74,24 @@
                         </div>
                         <div class="form-group">
                             <label>Telefone</label>
-                            <input class="form-control" type="text" name="telefone">
+                            <input class="form-control" type="tel" name="telefone">
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input class="form-control" type="email" name="email">
+                            <input class="form-control" type="email" name="email" required placeholder="Informe um endereço de Email válido">
                         </div>
-                    </form>
-                </div>
-              <!-- </div> -->
-              <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Avançar</button>
-              </div>
+                    </div>
+                      <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Avançar</button>
+                      </div>
+              </form>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 <?php include("rodape.php") ?>
 <script>
-$(document).ready(function(){
-    $("#myModal").modal({backdrop: false});
-});
+//Desabilita fechar o modal no fundo
+    $(document).ready(function(){
+        $("#myModal").modal({backdrop: false});
+    });
 </script>

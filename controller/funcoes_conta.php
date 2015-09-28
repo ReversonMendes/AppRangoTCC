@@ -1,5 +1,4 @@
 <?php
-// include($_SERVER['DOCUMENT_ROOT']."/conecta.php");
 
 function listaUsuarios($conexao) {
 	$usuarios = array();

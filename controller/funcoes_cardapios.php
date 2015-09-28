@@ -1,6 +1,4 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT']."/conecta.php");
-
 function listaCardapios($conexao) {
 	$cardapios = array();
 	$resultado = mysqli_query($conexao, "select * from cardapios");
