@@ -14,7 +14,7 @@ $idempresa = $usuario['idempresa'];
 
 //se não retornar nada senha ou usuário inválido
 if($usuario == null) {
-	$_SESSION["danger"] = "Usuário ou senha inválido.";
+	$_SESSION["Danger"] = "Usuário ou senha inválido.";
 	header("Location: $login");
 } elseif( $idempresa > 0 and !is_null($idempresa) ) {
 	//Logado com sucesso!

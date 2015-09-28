@@ -20,12 +20,12 @@ if(array_key_exists('ativo', $_POST)) {
 }
 
 if(alteraUsuario($conexao, $id, $nome, $usuario, $codificado, $datanascimento, $email, $ativado)) {
-	$_SESSION["success"] = "Usuário alterado com sucesso!";
+	$_SESSION["Success"] = "Usuário alterado com sucesso!";
 	header("Location: cad_usuarios.php");
 }
  else {
 	$erro = mysqli_error($conexao);
-	$_SESSION["danger"] = "Usuário não foi alterado. erro:".$erro;
+	$_SESSION["Danger"] = "Usuário não foi alterado. erro:".$erro;
 	header("Location: cad_usuarios.php");
 }
 

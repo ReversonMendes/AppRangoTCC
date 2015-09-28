@@ -42,8 +42,8 @@
                       <h3 class="panel-title">Criar conta em MarmitApp</h3>
                   </div>
                   <div class="panel-body">
-                    <?php mostraAlerta("danger"); ?>
-                    <?php mostraAlerta("success"); ?>
+                    <?php mostraAlerta("Danger"); ?>
+                    <?php mostraAlerta("Success"); ?>
                       <form role="form" action="../model/valida_conta.php" method="post" name="conta">
                         <div class="form-group">
                            <label>Nome completo</label>

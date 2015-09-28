@@ -15,15 +15,15 @@ $senhacripto = md5($senha);
 
 //$usuario = buscaIdUsuario($conexao,usuarioLogado());
 if(sizeof(validaUsuario($conexao, $nome, $email)) > 0 ) {
-	$_SESSION["danger"] = "Já existe um usuário cadastrado com esse email ou usuario. Por favor informe outro nome.";
+	$_SESSION["Danger"] = "Já existe um usuário cadastrado com esse email ou usuario. Por favor informe outro nome.";
 	header("Location: ../view/criarconta.php");
 } else{
 	if(insereUsuario($conexao, $nome, $usuario, $senhacripto, $email, $ativado)) {
-		$_SESSION["success"] = "Cadastro realizado com Sucesso! Acesse a sua conta";
+		$_SESSION["Success"] = "Cadastro realizado com Sucesso! Acesse a sua conta";
 		header("Location: ../../index.php");
 	} else {
 		$erro = mysqli_error($conexao);
-		$_SESSION["danger"] = "Usuário não foi gravado. erro:".$erro;
+		$_SESSION["Danger"] = "Usuário não foi gravado. erro:".$erro;
 		header("Location: ../view/criarconta.php");
 	}
 }

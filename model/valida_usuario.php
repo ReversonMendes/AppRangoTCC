@@ -18,15 +18,15 @@ verificaUsuario();
 $usuariologado = buscaIdUsuario($conexao,usuarioLogado());
 
 if(sizeof(validaUsuario($conexao, $nome, $email)) > 0 ) {
-	$_SESSION["danger"] = "Já existe um usuário cadastrado com esse email ou usuario. Por favor informe outro nome.";
+	$_SESSION["Danger"] = "Já existe um usuário cadastrado com esse email ou usuario. Por favor informe outro nome.";
 	header("Location: cad_usuarios.php");
 } else{
 	if(insereUsuario($conexao, $nome, $usuario, $senhacripto, $datanascimento, $email, $ativado, 1)) {
-		$_SESSION["success"] = "Usuário gravado com sucesso!";
+		$_SESSION["Success"] = "Usuário gravado com sucesso!";
 		header("Location: cad_usuarios.php");
 	} else {
 		$erro = mysqli_error($conexao);
-		$_SESSION["danger"] = "Usuário não foi gravado. erro:".$erro;
+		$_SESSION["Danger"] = "Usuário não foi gravado. erro:".$erro;
 		header("Location: cad_usuarios.php");
 	}
 }

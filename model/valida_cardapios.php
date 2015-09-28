@@ -18,11 +18,11 @@ foreach($_POST as $field => $value) {
 // verificaUsuario();
 //
 // if(insereCardapio($conexao, $nomeprato, $diasemana, $idusuario, $flaginativo, $idempresa)) {
-// 	$_SESSION["success"] = "Cardápio gravado com Sucesso!.";
+// 	$_SESSION["Success"] = "Cardápio gravado com Sucesso!.";
 // 	header("Location: cad_cardapios.php");
 // } else {
 // 	$erro = mysqli_error($conexao);
-// 	$_SESSION["danger"] = "Cardápio não foi gravado. erro:".$erro;
+// 	$_SESSION["Danger"] = "Cardápio não foi gravado. erro:".$erro;
 // 	header("Location: cad_cardapios.php");
 // }
 

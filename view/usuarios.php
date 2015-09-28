@@ -11,8 +11,8 @@
    <div class="row">
       <div class="col-lg-12">
          <div class="panel panel-default">
-           <?php mostraAlerta("success"); ?>
-           <?php mostraAlerta("danger"); ?>
+           <?php mostraAlerta("Success"); ?>
+           <?php mostraAlerta("Danger"); ?>
                         <div class="panel-heading">
                            <a class="btn btn-primary btn-right" data-toggle="modal" data-target="#modalInserirUsuario"> <i class="fa fa-plus-square fa-2x"></i> </a>
                         </div>

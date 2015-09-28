@@ -39,11 +39,11 @@ echo(mysql_insert_id());
 	// }
 
 // if( insereEmpresa($conexao, $razao, $fantasia, $cnpj, $endereco, $numero, $cep, $telefone,$email,$idusuario)) {
-// 	$_SESSION["success"] = "Dados da sua empresa gravado com sucesso!";
+// 	$_SESSION["Success"] = "Dados da sua empresa gravado com sucesso!";
 // 		header("Location: ../view/painel.php");
 // }else {
 // 	$erro = mysqli_error($conexao);
-// 	$_SESSION["danger"] = "Houve um erro ao gravar os dados da sua empresa. erro:".$erro;
+// 	$_SESSION["Danger"] = "Houve um erro ao gravar os dados da sua empresa. erro:".$erro;
 // 	header("Location: ../view/empresa.php");
 // };
 

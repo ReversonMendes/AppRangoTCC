@@ -20,6 +20,9 @@
     <!-- jQuery -->
     <script src="../js/jquery.min.js"></script>
 
+    <!-- jQuery -->
+    <script src="../js/jquery.alert.min.js"></script>
+    
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
 
@@ -53,10 +56,8 @@ body {
                         <h3 class="panel-title">Entrar em MarmitApp</h3>
                     </div>
                     <div class="panel-body">
-
-                    <?php mostraAlerta("danger"); ?>
-                    <?php mostraAlerta("success"); ?>
-
+                    <?php mostraAlerta("Danger"); ?>
+                    <?php mostraAlerta("Success"); ?>
                         <form role="form" action="../model/valida_login.php" method="post">
                             <fieldset>
                                 <div class="form-group">

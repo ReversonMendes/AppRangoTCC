@@ -39,8 +39,8 @@
             <div class="modal-content">
               <div class="modal-header">
                 <h4 class="modal-title">Dados da empresa</h4>
-                   <?php mostraAlerta("success"); ?>
-                   <?php mostraAlerta("danger"); ?>
+                   <?php mostraAlerta("Success"); ?>
+                   <?php mostraAlerta("Danger"); ?>
               </div>
               <!-- <div class="modal-body"> -->
                 <form role="form" action="../model/valida_empresa.php" method="post">

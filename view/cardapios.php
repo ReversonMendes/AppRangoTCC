@@ -9,8 +9,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
-                       <?php mostraAlerta("success"); ?>
-                       <?php mostraAlerta("danger"); ?>
+                       <?php mostraAlerta("Success"); ?>
+                       <?php mostraAlerta("Danger"); ?>
                         <div class="panel-heading">
                             Cardápios de Marmitas
                         </div>
