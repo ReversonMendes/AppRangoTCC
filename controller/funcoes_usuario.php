@@ -26,8 +26,8 @@ function buscaUsuarios($conexao, $id) {
 	return mysqli_fetch_assoc($resultado);
 }
 
-function validaUsuario($conexao, $nome, $email) {
-	$query = "select * from usuario where nome = '{$nome}' or email = '{$email}'";
+function validaUsuario($conexao, $usuario, $email) {
+	$query = "select * from usuario where usuario = '{$usuario}' or email = '{$email}'";
 	$resultado = mysqli_query($conexao, $query);
 	return mysqli_fetch_assoc($resultado);
 }

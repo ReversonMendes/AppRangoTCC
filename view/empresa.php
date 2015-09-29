@@ -78,7 +78,7 @@
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input class="form-control" type="email" name="email" required placeholder="Informe um endereço de Email válido">
+                            <input class="form-control" type="email" name="email"  placeholder="Informe um endereço de Email válido">
                         </div>
                     </div>
                       <div class="modal-footer">

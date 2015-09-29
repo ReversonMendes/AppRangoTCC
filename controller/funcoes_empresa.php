@@ -7,31 +7,31 @@ function insereEmpresa($conexao, $razao, $fantasia, $cnpj, $endereco, $numero, $
 
 	if($resultado){
 		//pega id da empresa gerado pelo insert
-	   $idEmpresa = mysql_insert_id();	
-	   //inclui na coluna idempresa da tabela USUARIO no linha do usuário
-	   return $idEmpresa;
-	  // if (alteraUsuario($conexao,$idusuario,$idEmpresa)){
-	  // 	return true;
-	  // }else{
-	  // 	return false;
-	  // }
-	}
+	   $idEmpresa = mysqli_insert_id($conexao);	
+	  if(relacionaUsuario($conexao,$idusuario,$idEmpresa)){
+	  	return true;
+	  }else{
+	  	return false;
+	  }
+	}else{
+	  	return false;
+	  }
 }
 	
-
-function alteraEmpresa($conexao, $id, $empresa) {
-	$query = "update empresa set idempresa = '{$empresa}' where idempresa = '{$id}'";
+function alteraEmpresa($conexao, $razao, $fantasia, $cnpj, $endereco, $numero, $cep, $telefone,$email, $idempresa) {
+	$query = "update empresa set razaosocial = '{$razao}', nomefantasia = '{$fantasia}', cnpj = '{$cnpj}', endereco = '{$endereco}', 
+	          numero='{$numero}', cep = '{$cep}', fone = '{$telefone}',email = '{$email}' where idempresa = '{$idempresa}'";
 	return mysqli_query($conexao, $query);
 }
 
-function buscaEmpresa($conexao, $id) {
-	$query = "select * from usuario where idusuario = {$id}";
+function buscaEmpresa($conexao, $idempresa) {
+	$query = "select * from empresa where idempresa = {$idempresa}";
 	$resultado = mysqli_query($conexao, $query) or die(mysql_error());
 	return mysqli_fetch_assoc($resultado);
 }
 
-function alteraUsuario($conexao, $idusuario, $empresa) {
-	$query = "update usuario set idempresa = '{$empresa}' where idusuario = '{$idusuario}'";
+function relacionaUsuario($conexao, $idusuario, $idempresa) {
+	$query = "update usuario set idempresa = '{$idempresa}' where idusuario = '{$idusuario}'";
 	return mysqli_query($conexao, $query);
 }
 

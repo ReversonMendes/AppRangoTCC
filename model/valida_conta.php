@@ -14,7 +14,7 @@ $senhacripto = md5($senha);
 //$admin = $_POST['admin'];
 
 //$usuario = buscaIdUsuario($conexao,usuarioLogado());
-if(sizeof(validaUsuario($conexao, $nome, $email)) > 0 ) {
+if(sizeof(validaUsuario($conexao, $usuario, $email)) > 0 ) {
 	$_SESSION["Danger"] = "Já existe um usuário cadastrado com esse email ou usuario. Por favor informe outro nome.";
 	header("Location: ../view/criarconta.php");
 } else{
