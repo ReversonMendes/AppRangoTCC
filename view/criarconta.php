@@ -66,7 +66,7 @@
                            <input class="form-control" type="password" name="confirmasenha" required>
                         </div>
                         <div class="form-group">
-                          <button type="submit" class="btn btn-lg btn-success btn-block"  onClick="validarSenha()">Gravar</button>
+                          <button type="submit" class="btn btn-lg btn-success btn-block">Gravar</button>
                         </div>
                       </form>
                       <div>

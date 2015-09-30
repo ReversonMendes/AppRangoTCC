@@ -7,7 +7,7 @@ $painel = "../view/painel.php";
 $cadastra_empresa = "../view/empresa.php";
 
 //Busca todas as informação do usuário
-$usuario = buscaUsuario($conexao, $_POST["email"],$_POST["email"], $_POST["senha"]);
+$usuario = buscaUsuario($conexao, $_POST["usuario"],$_POST["email"], $_POST["senha"]);
 
 //recebe a empresa do usuário
 $idempresa = $usuario['idempresa'];
