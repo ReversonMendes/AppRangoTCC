@@ -20,6 +20,9 @@
     <!-- jQuery -->
     <script src="../js/jquery.min.js"></script>
 
+    <!-- jQuery Mascaras -->
+    <script src="../js/jquery_mask.min.js"></script>
+
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
 
@@ -55,7 +58,7 @@
                         </div>
                         <div class="form-group">
                             <label>CNPJ</label>
-                            <input class="form-control" type="text" name="cnpj">
+                            <input class="form-control" type="text" id="cnpj" name="cnpj">
                         </div>
                         <div class="form-group">
                             <label>Endereço</label>
@@ -70,11 +73,11 @@
                         </div>
                         <div class="form-group">
                             <label>CEP</label>
-                            <input class="form-control" type="text" name="cep">
+                            <input class="form-control" type="text" id="cep" name="cep">
                         </div>
                         <div class="form-group">
                             <label>Telefone</label>
-                            <input class="form-control" type="tel" name="telefone">
+                            <input class="form-control" type="tel" id="telefone" name="telefone">
                         </div>
                         <div class="form-group">
                             <label>Email</label>

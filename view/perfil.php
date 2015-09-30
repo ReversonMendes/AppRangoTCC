@@ -18,8 +18,8 @@
        <div class="panel-group">
        <?php
            $usuariologado = buscaIdUsuario($conexao,usuarioLogado());
-            $usuario = buscaUsuarios($conexao, $usuariologado["idusuario"]);
-            $empresa = buscaEmpresa($conexao, $usuario['idempresa']);
+           $usuario = buscaUsuarios($conexao, $usuariologado["idusuario"]);
+           $empresa = buscaEmpresa($conexao, $usuario['idempresa']);
         ?>
         <div class="panel panel-info">
           <div class="panel-heading">Meus dados</div>
@@ -39,22 +39,12 @@
                     </div>
                     <div class="form-group">
                        <label>Data nascimento</label>
-                       <input class="form-control" type="date" name="datanascimento" value="<?=$usuario['dtnascimento']?>" id="campodata"required placeholder="yyyy-MM-dd">
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="form-group">
-                       <label>Usuário</label>
-                       <input class="form-control" type="text" name="usuario" value="<?=$usuario['usuario']?>" required >
+                       <input class="form-control" type="date" id="campoData" name="datanascimento" value="<?=$usuario['dtnascimento']?>" id="campodata"required placeholder="yyyy-MM-dd">
                     </div>
                     <div class="form-group">
-                       <label>Senha</label>
-                       <input class="form-control" type="password" name="senha" value="" required>
+                      <button  type="submit"  class="btn btn-info">Gravar</button>
                     </div>
-                    <div class="form-group">
-                      <button  href="cad_usuarios.php"  class="btn btn-info">Gravar</button>
-                    </div>
-                </div>
+                  </div>
              </form>
               <div class="col-lg-4">
                <div class="light-well">
@@ -75,7 +65,7 @@
                     <div class="form-group">
                        <input type="hidden" name="idempresa" value="<?=$empresa['idempresa']?>">
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                         <div class="form-group">
                             <label>Nome</label>
                             <input class="form-control" type="text" name="razao" value="<?=$empresa['razaosocial']?>">
@@ -86,25 +76,25 @@
                         </div>
                         <div class="form-group">
                             <label>CNPJ</label>
-                            <input class="form-control" type="text" name="cnpj" value="<?=$empresa['cnpj']?>">
+                            <input class="form-control" type="text" id="cnpj" name="cnpj" value="<?=$empresa['cnpj']?>">
                         </div>
                         <div class="form-group">
                             <label>Endereço</label>
                             <input class="form-control" type="text" name="endereco" value="<?=$empresa['endereco']?>">
                         </div>                    
                   </div>
-                  <div class="col-lg-6">
+                  <div class="col-lg-4">
                         <div class="form-group">
                             <label>Número</label>
                             <input class="form-control" type="text" name="numero" value="<?=$empresa['numero']?>">
                         </div>
                         <div class="form-group">
                             <label>CEP</label>
-                            <input class="form-control" type="text" name="cep" value="<?=$empresa['cep']?>">
+                            <input class="form-control" type="text" id="cep" name="cep" value="<?=$empresa['cep']?>">
                         </div>
                         <div class="form-group">
                             <label>Telefone</label>
-                            <input class="form-control" type="tel" name="telefone" value="<?=$empresa['fone']?>">
+                            <input class="form-control" type="tel" id="telefone" name="telefone" value="<?=$empresa['fone']?>">
                         </div>
                         <div class="form-group">
                             <label>Email</label>
@@ -114,14 +104,51 @@
                           <button type="submit" class="btn btn-info">Gravar</button>
                         </div>
                   </div>
+                  <div class="col-lg-4">
+                    <div class="light-well">
+                      <img alt=""  src="#" class="img-circle">
+                      <div class="form-group">
+                        <label>Logo ou foto da empresa</label>
+                        <input type="file">
+                      </div>
+                    </div>
+                  </div>
               </form>
           </div>
         </div>
         <div class="panel panel-danger">
-          <div class="panel-heading">Outra coisa</div>
+          <div class="panel-heading">Conta</div>
           <div class="panel-body">
-            <label>Deletar a conta</label>
-            <button type="submit" class="btn btn-danger" name="alterar">Excluir minha conta</button>
+            <div class="col-lg-6">
+             <form role="form" action="../model/valida_usuario.php" method="post">
+                <div class="form-group">
+                   <label>Usuário</label>
+                   <input class="form-control" type="text" name="usuario" value="<?=$usuario['usuario']?>" required >
+                </div>
+                <div class="form-group">
+                   <label>Senha</label>
+                   <input class="form-control" type="password" name="senha" value="<?=$usuario['senha']?>" required>
+                </div>
+                <div class="form-group">
+                   <label>Nova Senha</label>
+                   <input class="form-control" type="password" name="senha" value="" required>
+                </div>
+                <div class="form-group">
+                   <label>Confirmar Senha</label>
+                   <input class="form-control" type="password" name="senha" value="" required>
+                </div>
+                <div class="form-group">
+                  <button  href="cad_usuarios.php"  class="btn btn-info">Gravar</button>
+                </div>
+            </form>
+            </div>
+            <div class="col-lg-6">
+              <div align="right">
+              <label>Lembre-se ao clicar em excluir minha conta, a sua conta será desativada e todos os dados da sua empresa serão perdidos.</label>
+              </div>
+              <div align="right">
+                <button type="submit" class="btn btn-danger" name="alterar">Excluir minha conta</button>
+              </div>
           </div>
         </div>
       </div>
