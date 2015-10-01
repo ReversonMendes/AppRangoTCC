@@ -7,7 +7,7 @@ $painel = "../view/painel.php";
 $cadastra_empresa = "../view/empresa.php";
 
 //Busca todas as informação do usuário
-$usuario = buscaUsuario($conexao, $_POST["usuario"],$_POST["email"], $_POST["senha"]);
+$usuario = buscaUsuario($conexao, $_POST["email"],$_POST["email"], $_POST["senha"]);
 
 //recebe a empresa do usuário
 $idempresa = $usuario['idempresa'];
@@ -17,6 +17,7 @@ if($usuario == null) {
 	$_SESSION["Danger"] = "Usuário ou senha inválido.";
 	header("Location: $login");
 } elseif( $idempresa > 0 and !is_null($idempresa) ) {
+	$_SESSION["Success"] = "Logado com sucesso.";
 	//Logado com sucesso!
 	logaUsuario($usuario["email"]);
 	header("Location: $painel");

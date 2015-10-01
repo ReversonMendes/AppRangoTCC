@@ -1,3 +1,4 @@
+
 <?php
 session_start();
  function mostraAlerta($tipo) {
@@ -7,8 +8,9 @@ session_start();
  <script type="text/javascript">
 	$(function(){
 		$(document).ready(function(){
+			$('#Danger').showBootstrapAlert<?= $tipo ?>('<?= $_SESSION[$tipo]?>', Bootstrap.ContentType.Text, true);
 			//Alerta por 5 segundos
-			$('#<?= $tipo ?>').showBootstrapAlert<?= $tipo ?>('<?= $_SESSION[$tipo]?>', Bootstrap.ContentType.Text, false, 5000);
+			$('#Success').showBootstrapAlert<?= $tipo ?>('<?= $_SESSION[$tipo]?>', Bootstrap.ContentType.Text, false, 5000);
 		});
 	});
 </script>

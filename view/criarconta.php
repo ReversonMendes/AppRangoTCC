@@ -6,7 +6,7 @@
     <title>MarmitApp</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
     <link href="../css/metisMenu.min.css" rel="stylesheet">
@@ -15,10 +15,16 @@
     <link href="../css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- jQuery -->
     <script src="../js/jquery.min.js"></script>
+
+    <!-- jQuery Alerta -->
+    <script src="../js/jquery.alert.min.js"></script>
+
+    <!-- jQuery Mascaras -->
+    <script src="../js/jquery_mask.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
@@ -26,8 +32,14 @@
     <!-- Metis Menu Plugin JavaScript -->
     <script src="../js/metisMenu.min.js"></script>
 
+    <!-- DataTables JavaScript -->
+    <!--<script src="/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script> -->
+
     <!-- Custom Theme JavaScript -->
     <script src="../js/sb-admin-2.js"></script>
+
+    <!-- Meus script -->
+    <script src="../js/marmita.js"></script>
 </head>
 
 <?php
@@ -37,13 +49,13 @@
   <div class="container">
       <div class="row">
           <div class="col-md-4 col-md-offset-4">
+            <?php mostraAlerta("Danger"); ?>
+            <?php mostraAlerta("Success"); ?>
               <div class="login-panel panel panel-default">
                   <div class="panel-heading">
                       <h3 class="panel-title">Criar conta em MarmitApp</h3>
                   </div>
                   <div class="panel-body">
-                    <?php mostraAlerta("Danger"); ?>
-                    <?php mostraAlerta("Success"); ?>
                       <form role="form" action="../model/valida_conta.php" method="post" name="conta">
                         <div class="form-group">
                            <label>Nome completo</label>
