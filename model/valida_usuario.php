@@ -1,6 +1,6 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT']."/controller/conecta.php");
-include($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_login.php");
+require_once($_SERVER['DOCUMENT_ROOT']."/controller/conecta.php");
+require_once($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_login.php");
 
 require_once($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_usuario.php");
 
@@ -12,11 +12,12 @@ $id = $_POST['id'];
 $nome = $_POST['nome'];
 $email = $_POST['email'];
 $datanascimento = $_POST['datanascimento'];
-
+$erro = 0;
 //formata a data
 $datanascimento = date("Y-m-d",strtotime(str_replace('/','-',$datanascimento))); 
 
 //Tem que validar se foi informado algum arquivo
+if(!isset($_FILES['arquivo']['tmp_name']) || !empty($_FILES['arquivo']['tmp_name'])) {
 	// Lista de tipos de arquivos permitidos
 	$tiposPermitidos= array('image/gif', 'image/jpeg', 'image/pjpeg', 'image/png');
 	// Tamanho máximo (em bytes)
@@ -36,10 +37,12 @@ $datanascimento = date("Y-m-d",strtotime(str_replace('/','-',$datanascimento)));
 	if ($arqError == 0) {
 	    // Verifica o tipo de arquivo enviado
 		if (array_search($arqType, $tiposPermitidos) === false) {
+			$erro = 1;
 			$_SESSION["Danger"] = "O tipo de arquivo enviado é inválido!";
 			header("Location: ../view/perfil.php");
 		// Verifica o tamanho do arquivo enviado
 		} else if ($arqSize > $tamanhoPermitido) {
+			$erro = 1;
 			$_SESSION["Danger"] = "O tamanho do arquivo enviado é maior que o limite!";
 			header("Location: ../view/perfil.php");
 		// Não houveram erros, move o arquivo
@@ -54,25 +57,32 @@ $datanascimento = date("Y-m-d",strtotime(str_replace('/','-',$datanascimento)));
 			  //Grava no banco o nome do arquivo da foto do usuário
 			if ($upload == true) {
 			  	if(alteraFoto($conexao, $id, $foto)) {
-					$_SESSION["Success"] = "Dados alterado com sucesso!";
-					header("Location: ../view/perfil.php");
+					// $_SESSION["Success"] = "Foto alterado com sucesso!";
+					// header("Location: ../view/perfil.php");
+					// die();
 				} else {
 					$erro = mysqli_error($conexao);
+					$erro = 1;
 					$_SESSION["Danger"] = "Os dados não foram alterado. erro:".$erro;
 					header("Location: ../view/perfil.php");
+					die();
 				}
 			}else{
+					$erro = 1;
 					$_SESSION["Danger"] = "Ocorreu algum erro com o upload, por favor tente novamente!";
 					header("Location: ../view/perfil.php");
+					die();
 	    	}
 		}		
 	}else{
+		$erro = 1;
 		$_SESSION["Danger"] = "Ocorreu algum erro com o upload, por favor tente novamente!";
 		header("Location: ../view/perfil.php");
+		die();
 	}
+}
 
-
-if($id > 0){
+if($id > 0 and $erro < 1){
 	if(alteraUsuario($conexao, $id, $nome,$datanascimento, $email)) {
 		$_SESSION["Success"] = "Dados alterado com sucesso!";
 		header("Location: ../view/perfil.php");
@@ -83,19 +93,4 @@ if($id > 0){
 		header("Location: ../view/perfil.php");
 	}
 }
-// }else{
-// 		if(sizeof(validaUsuario($conexao, $usuario, $email)) > 0 ) {
-// 			$_SESSION["Danger"] = "Já existe um usuário cadastrado com esse email ou usuario. Por favor informe outro nome.";
-// 			header("Location: ../view/perfil.php");
-// 		}else {
-// 			if(insereUsuario($conexao, $nome, $usuario, $senhacripto, $datanascimento, $email, $ativado, 1)) {
-// 				$_SESSION["Success"] = "Usuário gravado com sucesso!";
-// 				
-// 			} else {
-// 				$erro = mysqli_error($conexao);
-// 				$_SESSION["Danger"] = "Usuário não foi gravado. erro:".$erro;
-// 				header("Location: ../view/perfil.php");
-// 			}
-// 		}
-// }
 ?>

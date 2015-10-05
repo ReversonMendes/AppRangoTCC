@@ -63,7 +63,7 @@
         <div class="panel panel-info">
           <div class="panel-heading">Dados da minha empresa</div>
           <div class="panel-body">
-             <form role="form" action="../model/valida_empresa.php" method="post">
+             <form role="form" action="../model/valida_empresa.php" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                        <input type="hidden" name="idempresa" value="<?=$empresa['idempresa']?>">
                     </div>
@@ -106,11 +106,11 @@
                   <div class="row">
                     <div class="col-xs-6 col-md-3">
                       <a class="thumbnail">
-                        <img src="../img/uploads/profile/<?=$usuario['logo']?>">
+                        <img src="../img/uploads/empresas_logos/<?=$empresa['logo']?>">
                       </a>
                       <div class="form-group">
                         <label>Alterar imagem</label>
-                        <input type="file" name="uplogo">
+                        <input type="file" name="logo">
                       </div>
                     </div>
                   </div>

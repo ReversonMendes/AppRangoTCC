@@ -24,6 +24,11 @@ function alteraEmpresa($conexao, $razao, $fantasia, $cnpj, $endereco, $numero, $
 	return mysqli_query($conexao, $query);
 }
 
+function alteraLogo($conexao, $id, $logo) {
+	$query = "update empresa set logo='{$logo}' where idempresa = '{$id}'";
+	return mysqli_query($conexao, $query);
+}
+
 function buscaEmpresa($conexao, $idempresa) {
 	$query = "select * from empresa where idempresa = {$idempresa}";
 	$resultado = mysqli_query($conexao, $query) or die(mysql_error());

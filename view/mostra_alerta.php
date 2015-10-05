@@ -3,9 +3,11 @@
 session_start();
  function mostraAlerta($tipo) {
 	 if(isset($_SESSION[$tipo])) {
+
 ?>
 <div id="<?= $tipo ?>"></div>
- <script type="text/javascript">
+
+<script type="text/javascript">
 	$(function(){
 		$(document).ready(function(){
 			$('#Danger').showBootstrapAlert<?= $tipo ?>('<?= $_SESSION[$tipo]?>', Bootstrap.ContentType.Text, true);
