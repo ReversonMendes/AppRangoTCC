@@ -24,7 +24,7 @@
         <div class="panel panel-info">
           <div class="panel-heading">Meus dados</div>
           <div class="panel-body">
-            <form role="form" action="../model/valida_usuario.php" method="post">
+            <form role="form" action="../model/valida_usuario.php" method="post" enctype="multipart/form-data">
                  <div class="form-group">
                        <input type="hidden" name="id" value="<?=$usuario['idusuario']?>">
                  </div>
@@ -39,22 +39,24 @@
                     </div>
                     <div class="form-group">
                        <label>Data nascimento</label>
-                       <input class="form-control" type="date" id="campoData" name="datanascimento" value="<?=$usuario['dtnascimento']?>" id="campodata"required placeholder="yyyy-MM-dd">
+                       <input class="form-control" type="date" id="datanascimento" name="datanascimento" value="<?=date('d-m-Y',strtotime(str_replace('-','/',$usuario['dtnascimento'])))?>" required placeholder="yyyy-MM-dd">
                     </div>
                     <div class="form-group">
                       <button  type="submit"  class="btn btn-info">Gravar</button>
                     </div>
+                </div>
+                  <div class="row">
+                    <div class="col-xs-6 col-md-3">
+                      <a class="thumbnail">
+                        <img src="../img/uploads/profile/<?= $usuario['foto']?>">
+                      </a>
+                      <div class="form-group">
+                        <label>Alterar imagem</label>
+                        <input type="file" name="arquivo">
+                      </div>
+                    </div>
                   </div>
-             </form>
-              <div class="col-lg-4">
-               <div class="light-well">
-                  <img alt=""  src="#" class="img-circle">
-                  <div class="form-group">
-                      <label>File input</label>
-                      <input type="file">
-                  </div>
-               </div>
-            </div>
+            </form>
              </div>
           </div>
         </div>
@@ -100,18 +102,20 @@
                             <label>Email</label>
                             <input class="form-control" type="email" name="email"  placeholder="Informe um endereço de Email válido" value="<?=$empresa['email']?>">
                         </div>
-                        <div class="form-group">
-                          <button type="submit" class="btn btn-info">Gravar</button>
-                        </div>
                   </div>
-                  <div class="col-lg-4">
-                    <div class="light-well">
-                      <img alt=""  src="#" class="img-circle">
+                  <div class="row">
+                    <div class="col-xs-6 col-md-3">
+                      <a class="thumbnail">
+                        <img src="../img/uploads/profile/<?=$usuario['logo']?>">
+                      </a>
                       <div class="form-group">
-                        <label>Logo ou foto da empresa</label>
-                        <input type="file">
+                        <label>Alterar imagem</label>
+                        <input type="file" name="uplogo">
                       </div>
                     </div>
+                  </div>
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-info">Gravar</button>
                   </div>
               </form>
           </div>
@@ -120,25 +124,22 @@
           <div class="panel-heading">Conta</div>
           <div class="panel-body">
             <div class="col-lg-6">
-             <form role="form" action="../model/valida_usuario.php" method="post">
-                <div class="form-group">
-                   <label>Usuário</label>
-                   <input class="form-control" type="text" name="usuario" value="<?=$usuario['usuario']?>" required >
-                </div>
-                <div class="form-group">
-                   <label>Senha</label>
-                   <input class="form-control" type="password" name="senha" value="<?=$usuario['senha']?>" required>
+             <form role="form" action="../model/valida_conta.php" method="post">
+                 <div class="form-group ">
+                <div class="form-group has-error has-feedback">
+                   <label  for="inputError2">Usuário</label>
+                   <input class="form-control" type="text" name="usuario"  value="<?=$usuario['usuario']?>" required >
                 </div>
                 <div class="form-group">
                    <label>Nova Senha</label>
-                   <input class="form-control" type="password" name="senha" value="" required>
+                   <input class="form-control" type="password" name="novasenha" value="" required>
                 </div>
                 <div class="form-group">
                    <label>Confirmar Senha</label>
-                   <input class="form-control" type="password" name="senha" value="" required>
+                   <input class="form-control" type="password" name="confirmasenha" value="" required>
                 </div>
                 <div class="form-group">
-                  <button  href="cad_usuarios.php"  class="btn btn-info">Gravar</button>
+                  <button type="submit" class="btn btn-info">Gravar</button>
                 </div>
             </form>
             </div>
@@ -147,7 +148,7 @@
               <label>Lembre-se ao clicar em excluir minha conta, a sua conta será desativada e todos os dados da sua empresa serão perdidos.</label>
               </div>
               <div align="right">
-                <button type="submit" class="btn btn-danger" name="alterar">Excluir minha conta</button>
+                <button href="excluir_conta.php" class="btn btn-danger" name="alterar">Excluir minha conta</button>
               </div>
           </div>
         </div>

@@ -40,29 +40,18 @@
 
     <!-- Meus script -->
     <script src="../js/marmita.js"></script>
-
-    <link rel="stylesheet" href="../css/style.css" />
-    <script src="../js/modernizr-2.6.2.min.js"></script>
 </head>
-<!-- 
+
 <style>
 body {
-    background-image: url('../img/background.jpg');
+    background-image: url('../img/background.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
     background-size: 100% 100%;
 }
-</style> -->
+</style>
 
-    <div id="environment">
-      <div id="content">
-        <section id="first"></section>
-        <section id="second"></section>
-        <section id="third"></section>
-        <section id="fourth"></section>
-      </div>
-    </div>
 <?php
     require_once("mostra_alerta.php")
 ?>
@@ -101,4 +90,5 @@ body {
         </div>
     </div>
 </body>
+
 </html>

@@ -14,11 +14,15 @@ function insereUsuario($conexao, $nome, $usuario, $senha, $datanascimento, $emai
 	return mysqli_query($conexao, $query);
 }
 
-function alteraUsuario($conexao, $id,  $nome, $usuario, $senha, $datanascimento, $email, $ativado) {
-	$query = "update usuario set nome = '{$nome}', email = '{$email}', dtnascimento = {$datanascimento}, usuario= '{$usuario}', senha = '{$senha}', flaginativo = {$ativado} where idusuario = '{$id}'";
+function alteraUsuario($conexao, $id,  $nome, $datanascimento, $email) {
+	$query = "update usuario set nome = '{$nome}', email = '{$email}', dtnascimento = '{$datanascimento}' where idusuario = '{$id}'";
 	return mysqli_query($conexao, $query);
 }
 
+function alteraFoto($conexao, $id, $foto) {
+	$query = "update usuario set foto='{$foto}' where idusuario = '{$id}'";
+	return mysqli_query($conexao, $query);
+}
 
 function buscaUsuarios($conexao, $id) {
 	$query = "select * from usuario where idusuario = {$id}";
