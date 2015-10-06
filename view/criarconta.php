@@ -20,7 +20,7 @@
     <!-- jQuery -->
     <script src="../js/jquery.min.js"></script>
     <!-- Inclusão do Jquery Validate -->
-    <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.validate/1.6/jquery.validate.js" ></script>
+    <script src="../js/jquery.validate.min.js" ></script>
 
     <!-- jQuery Alerta -->
     <script src="../js/jquery.alert.min.js"></script>
