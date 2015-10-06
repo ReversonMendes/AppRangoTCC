@@ -18,7 +18,7 @@
                         <div class="panel-body">
                         <div class="col-lg-6">
                            <div class="panel-group">
-                            <div class="panel panel-info">
+                            <div class="panel panel-primary">
                               <div class="panel-heading">Marmita</div>
                               <div class="panel-body">
                                  <div class="form-group">
@@ -39,7 +39,7 @@
                                 </div>
                               </div>
                               </div>
-                            <div class="panel panel-info">
+                            <div class="panel panel-primary">
                               <div class="panel-heading">Preços</div>
                               <div class="panel-body">
                               ----------------------
@@ -51,7 +51,7 @@
                               -----------------------
                               </div>
                             </div>
-                            <div class="panel panel-info">
+                            <div class="panel panel-primary">
                               <div class="panel-heading">Forma de pagamento</div>
                               <div class="panel-body">
                                 <div class="col-lg-6">
@@ -65,7 +65,7 @@
                           </div>
                         </div>
                         <div class="col-lg-6">
-                            <div class="panel panel-info">
+                            <div class="panel panel-primary">
                                 <div class="panel-heading">Ingredientes</div>
                                     <div class="panel-body">
                                         <div class="table-responsive">
@@ -81,7 +81,7 @@
                                                 </tbody>
                                             </table>
                                             <input class="form-control" type="hidden" name="total">
-                                           <button type="button" class="btn btn-info"  id='incluir' value='incluir' onclick='adiciona_ingrediente()'>Incluir</button>
+                                           <button type="button" class="btn btn-primary"  id='incluir' value='incluir' onclick='adiciona_ingrediente()'>Incluir</button>
                                      </div>
                                 </div>
                             </div>
@@ -97,20 +97,20 @@
                             <div class="row">
                             <div class="col-lg-6">
                             <div class="panel-group">
-                            <div class="panel panel-info">
+                            <div class="panel panel-primary">
                               <div class="panel-heading">Meus dados</div>
                               <div class="panel-body">
                                 <form role="form" action="/pagina/cardapios/valida_cardapios.php" method="post">
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-success">Gravar</button>
-                                            <button type="reset" class="btn btn-info">Cancelar</button>
+                                            <button type="reset" class="btn btn-primary">Cancelar</button>
                                         </div>
                                     </div>
                                 </div>
                                 </div>
                                 <div class="col-lg-6">
-                                 <div class="panel panel-info">
+                                 <div class="panel panel-primary">
                                   <div class="panel-heading">Dados da minha empresa</div>
                                   <div class="panel-body">                                    
                                     </div>

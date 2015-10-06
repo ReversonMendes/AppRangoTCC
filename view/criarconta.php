@@ -19,6 +19,8 @@
 
     <!-- jQuery -->
     <script src="../js/jquery.min.js"></script>
+    <!-- Inclusão do Jquery Validate -->
+    <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.validate/1.6/jquery.validate.js" ></script>
 
     <!-- jQuery Alerta -->
     <script src="../js/jquery.alert.min.js"></script>
@@ -56,7 +58,7 @@
                       <h3 class="panel-title">Criar conta em MarmitApp</h3>
                   </div>
                   <div class="panel-body">
-                      <form role="form" action="../model/valida_conta.php" method="post" name="conta">
+                      <form id="form" role="form" action="../model/valida_conta.php" method="post" name="conta">
                         <div class="form-group">
                            <label>Nome completo</label>
                            <input class="form-control" type="text" name="nome" required>
@@ -92,13 +94,34 @@
         </div>
     </div>
 <?php include("rodape.php") ?>
-<script>
-function validarSenha(){
-  senha = document.conta.senha.value
-  confirmasenha = document.conta.confirmasenha.value
-  if (senha == confirmasenha)
-    alert("SENHAS IGUAIS")
-  else
-    alert("SENHAS DIFERENTES")
-}
+
+<script type="text/javascript">
+    $(document).ready(function valida(){
+        $('#form').validate({
+      
+            rules:{
+                senha: {
+                    required: true
+                },
+                confirmasenha:{
+                    required: true,
+                    equalTo: "#senha"
+                },
+        
+      },
+        
+            messages:{
+
+                senha: {
+                    required: "O campo senha é obrigatório."
+                },
+                confirmasenha:{
+                    required: "O campo confirmação de senha é obrigatório.",
+                    equalTo: "O campo confirmação de senha deve ser idêntico ao campo senha."
+                },
+        
+      },
+ 
+        });
+    });
 </script>
