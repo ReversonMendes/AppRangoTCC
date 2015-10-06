@@ -44,7 +44,7 @@
 
 <style>
 body {
-    background-image: url('../img/background.jpg');
+    background-image: url('../img/background.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
