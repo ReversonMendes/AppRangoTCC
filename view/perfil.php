@@ -123,26 +123,30 @@
         <div class="panel panel-danger">
           <div class="panel-heading">Conta</div>
           <div class="panel-body">
+
             <div class="col-lg-6">
-             <form role="form" action="../model/valida_conta.php" method="post">
-                 <div class="form-group ">
-                <div class="form-group has-error has-feedback">
-                   <label  for="inputError2">Usuário</label>
-                   <input class="form-control" type="text" name="usuario"  value="<?=$usuario['usuario']?>" required >
-                </div>
-                <div class="form-group">
-                   <label>Nova Senha</label>
-                   <input class="form-control" type="password" name="novasenha" value="" required>
-                </div>
-                <div class="form-group">
-                   <label>Confirmar Senha</label>
-                   <input class="form-control" type="password" name="confirmasenha" value="" required>
-                </div>
-                <div class="form-group">
-                  <button type="submit" class="btn btn-info">Gravar</button>
-                </div>
-            </form>
+               <form role="form" action="../model/valida_conta.php" method="post">
+                  <div class="form-group">
+                       <input type="hidden" name="id" value="<?=$usuario['idusuario']?>">
+                  </div>
+                  <div class="form-group has-error has-feedback">
+                     <label  for="inputError2">Usuário</label>
+                     <input class="form-control" type="text" name="usuario"  value="<?=$usuario['usuario']?>" required >
+                  </div>
+                  <div class="form-group">
+                     <label>Nova Senha</label>
+                     <input class="form-control" type="password" name="novasenha" value="" required>
+                  </div>
+                  <div class="form-group">
+                     <label>Confirmar Senha</label>
+                     <input class="form-control" type="password" name="confirmasenha" value="" required>
+                  </div>
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-info">Gravar</button>
+                  </div>
+              </form>
             </div>
+
             <div class="col-lg-6">
               <div align="right">
               <label>Lembre-se ao clicar em excluir minha conta, a sua conta será desativada e todos os dados da sua empresa serão perdidos.</label>

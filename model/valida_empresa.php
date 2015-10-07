@@ -59,6 +59,7 @@ if(!isset($_FILES['logo']['tmp_name']) || !empty($_FILES['logo']['tmp_name'])) {
 			  // Define o novo nome do arquivo usando um UNIX TIMESTAMP
 			  $logo = $idempresa . '.' . $extensao;
 			  $upload = move_uploaded_file($arqTemp, $pasta . $logo);
+			  
 			  // Verifica se o arquivo foi movido com sucesso
 			  //Grava no banco o nome do arquivo da logo do usuário
 			if ($upload == true) {

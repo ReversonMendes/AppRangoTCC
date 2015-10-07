@@ -41,6 +41,15 @@
     <!-- Meus script -->
     <script src="../js/marmita.js"></script>
 </head>
+<style>
+body {
+    background-image: url('../img/background.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: 100% 100%;
+}
+</style>
 
 <?php
     require_once("mostra_alerta.php");
@@ -50,7 +59,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h4 class="modal-title">Dados da empresa</h4>
+                <h4 class="modal-title">Informe os dados da sua empresa</h4>
                    <?php mostraAlerta("Success"); ?>
                    <?php mostraAlerta("Danger"); ?>
               </div>
