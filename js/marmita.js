@@ -13,13 +13,13 @@ function adiciona_ingrediente(){
 		novaCelula.innerHTML = "&nbsp;"+totals+"";
 
 		novaCelula = novaLinha.insertCell(1);
-		novaCelula.innerHTML = "<input class='form-control' type='text' name='ingrediente"+totals+"'/>";
-	//	novaCelula.innerHTML = "<input class='form-control' type='text' name='ingrediente'/>";
+		novaCelula.innerHTML = "<input class='form-control' type='text' name='ingrediente["+totals+"]'/>";
+
 
 		novaCelula = novaLinha.insertCell(2);
 		novaCelula.align = "center";
 		novaCelula.innerHTML = "<button class='btn btn-danger' id='excluir' value='excluir' onclick='deleta_ingrediente("+totals+") '>Excluir</button>";
-		document.getElementById("total").innerHTML = 'Total:'+ totals;
+		//document.getElementById("total").innerHTML = 'Total:'+ totals;
 }
 
 
