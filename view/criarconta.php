@@ -95,33 +95,33 @@
     </div>
 <?php include("rodape.php") ?>
 
-<script type="text/javascript">
-    $(document).ready(function valida(){
-        $('#form').validate({
+// <script type="text/javascript">
+//     $(document).ready(function valida(){
+//         $('#form').validate({
       
-            rules:{
-                senha: {
-                    required: true
-                },
-                confirmasenha:{
-                    required: true,
-                    equalTo: "#senha"
-                },
+//             rules:{
+//                 senha: {
+//                     required: true
+//                 },
+//                 confirmasenha:{
+//                     required: true,
+//                     equalTo: "#senha"
+//                 },
         
-      },
+//       },
         
-            messages:{
+//             messages:{
 
-                senha: {
-                    required: "O campo senha é obrigatório."
-                },
-                confirmasenha:{
-                    required: "O campo confirmação de senha é obrigatório.",
-                    equalTo: "O campo confirmação de senha deve ser idêntico ao campo senha."
-                },
+//                 senha: {
+//                     required: "O campo senha é obrigatório."
+//                 },
+//                 confirmasenha:{
+//                     required: "O campo confirmação de senha é obrigatório.",
+//                     equalTo: "O campo confirmação de senha deve ser idêntico ao campo senha."
+//                 },
         
-      },
+//       },
  
-        });
-    });
-</script>
+//         });
+//     });
+// </script>

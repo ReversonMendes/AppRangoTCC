@@ -23,8 +23,9 @@ if(insereCardapio($conexao, $nomeprato, $diasemana, $idusuario, $flaginativo, $i
 	header("Location: ../view/cardapios.php");
 } else {
 	$erro = mysqli_error($conexao);
-	$_SESSION["Danger"] = "Cardápio não foi gravado. erro:".$erro;
-	header("Location: ../view/cardapios.php");
+	// $_SESSION["Danger"] = "Cardápio não foi gravado. erro:".$erro;
+	// header("Location: ../view/cardapios.php");
+	echo($erro);
 }
 
 die();

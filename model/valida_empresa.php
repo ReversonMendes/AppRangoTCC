@@ -5,7 +5,13 @@ include($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_login.php");
 include($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_empresa.php");
 
 //Dados do form
-$idempresa = $_POST['idempresa'];
+
+if(array_key_exists('idempresa', $_POST)){
+	$idempresa = $_POST['idempresa'];
+}else{
+	$idempresa = 0;
+}
+
 $razao = $_POST['razao'];
 $fantasia = $_POST['fantasia'];
 $cnpj = $_POST['cnpj'];
@@ -23,7 +29,7 @@ $idusuario = buscaIdUsuario($conexao,usuarioLogado());
 //     echo " Campo: ".$field." Valor: ".$value;
 // }
 //Tem que validar se foi informado algum arquivo
-if(!isset($_FILES['logo']['tmp_name']) || !empty($_FILES['logo']['tmp_name'])) {
+if(array_key_exists('logo', $_FILES) && !isset($_FILES['logo']['tmp_name']) || !empty($_FILES['logo']['tmp_name'])) {
 	// Lista de tipos de arquivos permitidos
 	$tiposPermitidos= array('image/gif', 'image/jpeg', 'image/pjpeg', 'image/png');
 	// Tamanho máximo (em bytes)
@@ -88,8 +94,10 @@ if(!isset($_FILES['logo']['tmp_name']) || !empty($_FILES['logo']['tmp_name'])) {
 		die();
 	}
 }
+		
+echo($erro);
 
-//Validações Obrigatórias
+// //Validações Obrigatórias
 
 //se for maior vai alterar a empresa
 if($idempresa > 0 and $erro < 1) {
@@ -99,8 +107,9 @@ if($idempresa > 0 and $erro < 1) {
 			header("Location: ../view/perfil.php");
 	}else {
 		$erro = mysqli_error($conexao);
-		$_SESSION["Danger"] = "Houve um erro ao gravar os dados da sua empresa. erro:".$erro;
-		header("Location: ../view/perfil.php");
+		echo($erro);
+		// $_SESSION["Danger"] = "Houve um erro ao gravar os dados da sua empresa. erro:".$erro;
+		// header("Location: ../view/perfil.php");
 	};
 }else{
 	//Insere nova empresa
@@ -109,8 +118,9 @@ if($idempresa > 0 and $erro < 1) {
 			header("Location: ../view/painel.php");
 	}else {
 		$erro = mysqli_error($conexao);
-		$_SESSION["Danger"] = "Houve um erro ao gravar os dados da sua empresa. erro:".$erro;
-		header("Location: ../view/empresa.php");
+		echo($erro);
+		// $_SESSION["Danger"] = "Houve um erro ao gravar os dados da sua empresa. erro:".$erro;
+		// header("Location: ../view/perfil.php");
 	};
 };
 die();

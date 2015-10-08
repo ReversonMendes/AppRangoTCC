@@ -39,7 +39,7 @@
                     <a href="#"><i class="fa fa-edit fa-fw"></i>Cadastros<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="cardapios.php"> Cardápios</a>
+                            <a href="cardapio2.php"> Cardápios</a>
                         </li>
                         <li>
                             <a href="empresa.php"> Empresa</a>
