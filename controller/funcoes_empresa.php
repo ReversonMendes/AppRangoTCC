@@ -2,7 +2,7 @@
 
 function insereEmpresa($conexao, $razao, $fantasia, $cnpj, $endereco, $numero, $cep, $telefone,$email,$idusuario) {
 	$query = "insert into empresa (razaosocial, nomefantasia, endereco, cnpj, cep, fone, numero,email) values 
-			 ('{$razao}', '{$fantasia}', '{$endereco}', {$cnpj}, '{$cep}','{$telefone}','{$numero}','{$email}')";
+			 ('{$razao}', '{$fantasia}', '{$endereco}', '{$cnpj}', '{$cep}','{$telefone}','{$numero}','{$email}')";
 	$resultado = mysqli_query($conexao, $query);
 
 	if($resultado){

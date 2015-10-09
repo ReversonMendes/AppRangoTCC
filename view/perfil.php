@@ -39,7 +39,7 @@
                     </div>
                     <div class="form-group">
                        <label>Data nascimento</label>
-                       <input class="form-control" type="date" id="datanascimento" name="datanascimento" value="<?=date('d-m-Y',strtotime(str_replace('-','/',$usuario['dtnascimento'])))?>" required placeholder="yyyy-MM-dd">
+                       <input class="form-control" type="date" name="datanascimento" value="<?=date('d-m-Y',strtotime(str_replace('-','/',$usuario['dtnascimento'])))?>" required placeholder="yyyy-MM-dd">
                     </div>
                     <div class="form-group">
                       <button  type="submit"  class="btn btn-info">Gravar</button>
