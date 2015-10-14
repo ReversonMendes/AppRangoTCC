@@ -1,5 +1,4 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT']."/conecta.php");
 
 function listaUsuarios($conexao) {
 	$usuarios = array();
@@ -10,14 +9,13 @@ function listaUsuarios($conexao) {
 	return $usuarios;
 }
 
-function insereUsuario($conexao, $nome, $usuario, $senha, $datanascimento, $email, $ativado, $empresa) {
-	$query = "insert into usuario (nome, usuario, senha, dtnascimento, email, flaginativo, idempresa) values ('{$nome}', '{$usuario}', '{$senha}', {$datanascimento}, '{$email}',{$ativado},'{$empresa}')";
-	//return mysqli_query($conexao, $query);
-	echo($query);
+function insereUsuario($conexao, $nome, $usuario, $senha, $email, $ativado) {
+	$query = "insert into usuario (nome, usuario, senha, email, flaginativo) values ('{$nome}', '{$usuario}', '{$senha}','{$email}',{$ativado})";
+	return mysqli_query($conexao, $query);
 }
 
-function alteraUsuario($conexao, $id,  $nome, $usuario, $senha, $datanascimento, $email, $ativado) {
-	$query = "update usuario set nome = '{$nome}', email = '{$email}', dtnascimento = {$datanascimento}, usuario= '{$usuario}', senha = '{$senha}', flaginativo = {$ativado} where idusuario = '{$id}'";
+function alteraConta($conexao, $id, $usuario, $novasenha) {
+	$query = "update usuario set usuario= '{$usuario}', senha = '{$novasenha}' where idusuario = '{$id}'";
 	return mysqli_query($conexao, $query);
 }
 
@@ -28,8 +26,8 @@ function buscaUsuarios($conexao, $id) {
 	return mysqli_fetch_assoc($resultado);
 }
 
-function validaUsuario($conexao, $nome, $email) {
-	$query = "select * from usuario where nome = '{$nome}' or email = '{$email}'";
+function validaUsuario($conexao, $usuario, $email) {
+	$query = "select * from usuario where usuario = '{$usuario}' or email = '{$email}'";
 	$resultado = mysqli_query($conexao, $query);
 	return mysqli_fetch_assoc($resultado);
 }

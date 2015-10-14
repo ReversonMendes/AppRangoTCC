@@ -1,9 +1,13 @@
-<?php include("cabecalho.php");
+<?php 
+    require_once("cabecalho.php");
+    require_once("menu.php");
  ?>
 <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header"></h1>
+                    <?php mostraAlerta("Danger"); ?>
+                    <?php mostraAlerta("Success"); ?>
+                    <!-- <h1 class="page-header"></h1> -->
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -98,4 +102,4 @@
                     </div>
                 </div>
             </div>
-<?php include("rodape.php") ?>
+<?php require_once("rodape.php") ?>

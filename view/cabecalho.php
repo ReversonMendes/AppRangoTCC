@@ -24,6 +24,12 @@
     <!-- jQuery -->
     <script src="../js/jquery.min.js"></script>
 
+    <!-- jQuery Alerta -->
+    <script src="../js/jquery.alert.min.js"></script>
+
+    <!-- jQuery Mascaras -->
+    <script src="../js/jquery_mask.min.js"></script>
+
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
 
@@ -41,6 +47,3 @@
 </head>
 <body>
 
-<?php
-    include("menu.php");
-?>

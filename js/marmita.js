@@ -7,21 +7,31 @@ function adiciona_ingrediente(){
 		var novaLinha = tbl.insertRow(-1);
 		var novaCelula;
 
-
 		novaCelula = novaLinha.insertCell(0);
-		novaCelula.align = "left";
-		novaCelula.innerHTML = "&nbsp;"+totals+"";
+		novaCelula.innerHTML = "<input class='form-control' type='text' name='ingrediente["+totals+"]'/>";
+
 
 		novaCelula = novaLinha.insertCell(1);
-		novaCelula.innerHTML = "<input class='form-control' type='text' name='ingrediente"+totals+"'/>";
-	//	novaCelula.innerHTML = "<input class='form-control' type='text' name='ingrediente'/>";
-
-		novaCelula = novaLinha.insertCell(2);
 		novaCelula.align = "center";
 		novaCelula.innerHTML = "<button class='btn btn-danger' id='excluir' value='excluir' onclick='deleta_ingrediente("+totals+") '>Excluir</button>";
-		document.getElementById("total").innerHTML = 'Total:'+ totals;
 }
 
+function adiciona_ingredientealt(total){
+		totals = total;
+		totals++
+		tbl = document.getElementById("tabela_ingredientealt")
+
+		var novaLinha = tbl.insertRow(-1);
+		var novaCelula;
+
+		novaCelula = novaLinha.insertCell(0);
+		novaCelula.innerHTML = "<input class='form-control' type='text' name='ingrediente["+totals+"]'/>";
+
+
+		novaCelula = novaLinha.insertCell(1);
+		novaCelula.align = "center";
+		novaCelula.innerHTML = "<button class='btn btn-danger' id='excluir' value='excluir' onclick='deleta_ingrediente("+totals+") '>Excluir</button>";
+}
 
 
 

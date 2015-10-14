@@ -1,4 +1,6 @@
 <!-- Navigation -->
+<?php require_once($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_login.php"); 
+?>
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -7,28 +9,18 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.php"> MarmitApp </a>
+        <a class="navbar-brand"> MarmitApp </a>
     </div>
-    <!-- /.navbar-header -->
+
     <ul class="nav navbar-top-links navbar-right">
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
-            </a>
-            <ul class="dropdown-menu dropdown-user">
-                <li><a href="#"><i class="fa fa-user fa-fw"></i> Perfil do Usuário</a>
-                </li>
-                <li><a href="#"><i class="fa fa-gear fa-fw"></i> Configuração</a>
-                </li>
-                <li class="divider"></li>
-                <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Sair</a>
-                </li>
-            </ul>
-            <!-- /.dropdown-user -->
+        <li>
+            <a href="perfil.php" data-toggle="tooltip" data-placement="bottom" title="Perfil do Usuário"><i class="fa fa-user fa-fw"></i> <?= usuarioLogado() ?></a>
         </li>
-        <!-- /.dropdown -->
+        <li><a href="#" data-toggle="tooltip" data-placement="bottom" title="Configuração"><i class="fa fa-gear fa-fw"></i></a>
+        </li>
+        <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Sair</a>
+        </li>
     </ul>
-    <!-- /.navbar-top-links -->
 
     <div class="navbar-default sidebar" role="navigation">
         <div class="sidebar-nav navbar-collapse">
@@ -45,47 +37,7 @@
                 <li>
                     <a href="entregas.php"><i class="fa fa-truck fa-fw"></i> Entregas</a>
                 </li>
-                <li>
-                    <a href="#"><i class="fa fa-edit fa-fw"></i>Cadastros<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a href="cardapios.php"> Cardápios</a>
-                        </li>
-                        <li>
-                            <a href="empresa.php"> Empresa</a>
-                        </li>
-                        <li>
-                            <a href="usuarios.php"> Usuário</a>
-                        </li>
-                    </ul>
-                </li>
-<!--                 <li>
-                    <a href="#"><i class="fa fa-wrench fa-fw"></i>Utilitários<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a href="panels-wells.html">Panels and Wells</a>
-                        </li>
-                        <li>
-                            <a href="buttons.html">Buttons</a>
-                        </li>
-                        <li>
-                            <a href="notifications.html">Notifications</a>
-                        </li>
-                        <li>
-                            <a href="typography.html">Typography</a>
-                        </li>
-                        <li>
-                            <a href="icons.html"> Icons</a>
-                        </li>
-                        <li>
-                            <a href="grid.html">Grid</a>
-                        </li>
-                    </ul>
-                     /.nav-second-level
-                </li> -->
             </ul>
         </div>
-        <!-- /.sidebar-collapse -->
     </div>
-    <!-- /.navbar-static-side -->
 </nav>
