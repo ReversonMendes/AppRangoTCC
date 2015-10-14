@@ -48,7 +48,7 @@
                                            </thead>
                                            <?php
                                               $cardapios = listaCardapios($conexao);
-                                              if(count($cardapios) > 0)       {
+                                              if(1==2)       {
                                               foreach ($cardapios as $cardapio) {
                                               ?>
                                            <tbody>
@@ -71,9 +71,6 @@
                                                     <a class="btn btn-info lg" data-toggle="modal" data-target="#modalAlterarCardapio">
                                                         <i class="fa fa-pencil"></i>
                                                     </a>
-<!--                                                    <button type="button" class="btn btn-info lg" data-toggle="modal" data-target="#modalAlterarCardapio">
-                                                    Alterar <i class="fa fa-pencil-square-o"></i>
-                                                   </button> -->
                                                  </td>
                                                  <td align="center">
                                                     <a class="btn btn-danger lg">
@@ -118,7 +115,7 @@
                       </div>
                     </div>
 
-                  <!-- Modal Inserir Cardapio-->
+                  <!-- ################        Modal Inserir Cardapio ######################-->
                   <div class="modal fade" id="modalInserirCardapio" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content ">
