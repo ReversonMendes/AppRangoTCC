@@ -10,6 +10,11 @@ function adiciona_ingrediente(){
 		novaCelula = novaLinha.insertCell(0);
 		novaCelula.innerHTML = "<input class='form-control' type='text' name='ingrediente["+totals+"]'/>";
 
+<<<<<<< HEAD
+=======
+		novaCelula = novaLinha.insertCell(1);
+		novaCelula.innerHTML = "<input class='form-control' type='text' name='ingrediente["+totals+"]'/>";
+>>>>>>> 886eb94294c3156be13894db054d50524369d7e2
 
 		novaCelula = novaLinha.insertCell(1);
 		novaCelula.align = "center";

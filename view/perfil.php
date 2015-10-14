@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php 
     require_once("cabecalho.php");
     require_once("menu.php");
@@ -6,6 +7,14 @@
     require_once($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_empresa.php");
     require_once($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_login.php");
     require_once("mostra_alerta.php")
+=======
+<?php include("cabecalho.php");
+   include($_SERVER['DOCUMENT_ROOT']."/controller/conecta.php");
+   require_once($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_usuario.php");
+   require_once($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_empresa.php");
+   require_once($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_login.php");
+   require_once("mostra_alerta.php")
+>>>>>>> 886eb94294c3156be13894db054d50524369d7e2
 ?>
 <div id="page-wrapper">
    <div class="row">
@@ -41,7 +50,11 @@
                     </div>
                     <div class="form-group">
                        <label>Data nascimento</label>
+<<<<<<< HEAD
                        <input class="form-control" type="date" id="datanascimento" name="datanascimento" value="<?=date('d-m-Y',strtotime(str_replace('-','/',$usuario['dtnascimento'])))?>" required placeholder="yyyy-MM-dd">
+=======
+                       <input class="form-control" type="date" name="datanascimento" value="<?=date('d-m-Y',strtotime(str_replace('-','/',$usuario['dtnascimento'])))?>" required placeholder="yyyy-MM-dd">
+>>>>>>> 886eb94294c3156be13894db054d50524369d7e2
                     </div>
                     <div class="form-group">
                       <button  type="submit"  class="btn btn-info">Gravar</button>
@@ -162,4 +175,8 @@
       </div>
     </div>
   </div>
+<<<<<<< HEAD
 <?php require_once("rodape.php") ?>
+=======
+<?php include("rodape.php") ?>
+>>>>>>> 886eb94294c3156be13894db054d50524369d7e2
