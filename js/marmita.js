@@ -13,7 +13,7 @@ function adiciona_ingrediente(){
 
 		novaCelula = novaLinha.insertCell(1);
 		novaCelula.align = "center";
-		novaCelula.innerHTML = "<button class='btn btn-danger' id='excluir' value='excluir' onclick='deleta_ingrediente("+totals+") '>Excluir</button>";
+		novaCelula.innerHTML = "<a class='btn btn-danger' id='excluir' value='excluir' onclick='deleta_ingrediente("+totals+")'><i class='fa fa-minus'></i></a>";
 }
 
 function adiciona_ingredientealt(total){
@@ -30,7 +30,7 @@ function adiciona_ingredientealt(total){
 
 		novaCelula = novaLinha.insertCell(1);
 		novaCelula.align = "center";
-		novaCelula.innerHTML = "<button class='btn btn-danger' id='excluir' value='excluir' onclick='deleta_ingrediente("+totals+") '>Excluir</button>";
+		novaCelula.innerHTML = "<a class='btn btn-danger' id='excluir' value='excluir' onclick='deleta_ingrediente("+totals+")'><i class='fa fa-minus'></i></a>";
 }
 
 

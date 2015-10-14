@@ -1,53 +1,6 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <title>MarmitApp</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- MetisMenu CSS -->
-    <link href="../css/metisMenu.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="../css/sb-admin-2.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="../lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- jQuery -->
-    <script src="../js/jquery.min.js"></script>
-    <!-- Inclusão do Jquery Validate -->
-    <script src="../js/jquery.validate.min.js" ></script>
-
-    <!-- jQuery Alerta -->
-    <script src="../js/jquery.alert.min.js"></script>
-
-    <!-- jQuery Mascaras -->
-    <script src="../js/jquery_mask.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../js/bootstrap.min.js"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="../js/metisMenu.min.js"></script>
-
-    <!-- DataTables JavaScript -->
-    <!--<script src="/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script> -->
-
-    <!-- Custom Theme JavaScript -->
-    <script src="../js/sb-admin-2.js"></script>
-
-    <!-- Meus script -->
-    <script src="../js/marmita.js"></script>
-</head>
-
 <?php
-    require_once("mostra_alerta.php");
+    require_once("cabecalho.php");
 ?>
-<body>
   <div class="container">
       <div class="row">
           <div class="col-md-4 col-md-offset-4">

@@ -28,8 +28,8 @@
                                   <div class="col-lg-18">
                                     <div class="panel panel-primary">
                                       <div class="panel-heading">
-                                        <a class="btn btn-success btn-right" data-toggle="modal" data-target="#modalInserirCardapio">
-                                          <i class="fa fa-plus-square"> Incluir Cárdapio</i>
+                                        <a class="btn btn-success" data-toggle="modal" data-target="#modalInserirCardapio">
+                                          <i class="fa fa-plus"></i>
                                         </a>
                                       </div>
                                       <div class="panel-body">
@@ -67,14 +67,17 @@
                                                      ?>
                                                  </td>
                                                  <td align="center">
-                                                   <button type="button" class="btn btn-info lg" data-toggle="modal" data-target="#modalAlterarCardapio">
-                                                    Alterar
-                                                   </button>
+                                                    <a class="btn btn-info lg" data-toggle="modal" data-target="#modalAlterarCardapio">
+                                                        <i class="fa fa-pencil"></i>
+                                                    </a>
+<!--                                                    <button type="button" class="btn btn-info lg" data-toggle="modal" data-target="#modalAlterarCardapio">
+                                                    Alterar <i class="fa fa-pencil-square-o"></i>
+                                                   </button> -->
                                                  </td>
                                                  <td align="center">
-                                                   <button type="button" class="btn btn-danger lg">
-                                                    Excluir
-                                                   </button>
+                                                    <a class="btn btn-danger lg">
+                                                         <i class="fa fa-minus"></i>
+                                                    </a>
                                                  </td>
                                               </tr>
                                            </tbody>
@@ -143,7 +146,9 @@
                                       <tbody>
                                       </tbody>
                                   </table>
-                                  <button type="button" class="btn btn-primary"  id='incluir' value='incluir' onclick='adiciona_ingrediente()'>Incluir</button>
+                                    <a class="btn btn-success" id='incluir' value='incluir' onclick='adiciona_ingrediente()'>
+                                          <i class="fa fa-plus"></i>
+                                    </a>
                               </div>
                               <div class="form-group" align="center">
                                 <button  type="submit"  class="btn btn-info">Gravar</button>
@@ -205,13 +210,15 @@
                                               <input class='form-control' type='text' name="ingrediente[<?=$key?>]" value="<?=$ingrediente['nomeingrediente']?>" />
                                           </td>
                                           <td align="center">
-                                              <button class='btn btn-danger' id='excluir' value='excluir' onclick='deleta_ingrediente("+totals+") '>Excluir</button>
+                                              <a class='btn btn-danger' id='excluir' value='excluir' onclick='deleta_ingrediente("+totals+")'><i class='fa fa-minus'></i></a>
                                           </td>
                                         </tr>
                                         <?php }?>
                                       </tbody>
                                   </table>
-                                  <button type="button" class="btn btn-primary"  id='incluir' value='incluir' onclick='adiciona_ingredientealt(<?=$key?>)'>Incluir</button>
+                                  <a class="btn btn-success" id='incluir' value='incluir' onclick='adiciona_ingredientealt(<?=$key?>)'>
+                                          <i class="fa fa-plus"></i>
+                                  </a>
                               </div>
                               <div class="form-group" align="center">
                                 <button  type="submit"  class="btn btn-info">Gravar</button>

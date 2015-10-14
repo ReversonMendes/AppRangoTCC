@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html>
-
 <?php
     require_once("cabecalho.php");
 ?>
@@ -14,11 +11,6 @@ body {
     background-size: 100% 100%;
 }
 </style>
-
-<?php
-    require_once("mostra_alerta.php");
-?>
-<body>
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog">
             <div class="modal-content">
