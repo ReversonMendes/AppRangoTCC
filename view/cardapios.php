@@ -37,7 +37,7 @@
                                         <table class="table table-striped table-bordered table-hover" id="tabela_usuario" width="100%" cellspacing="0">
                                            <thead>
                                               <tr>
-                                                 <th>#</th>
+                                                 <th hidden="hidden">#</th>
                                                  <th>Nome Prato</th>
                                                  <th>Dia Semana</th>
                                                  <th>Data de Alteração</th>
@@ -48,11 +48,12 @@
                                            </thead>
                                            <?php
                                               $cardapios = listaCardapios($conexao);
+                                              if(count($cardapios) > 0)       {
                                               foreach ($cardapios as $cardapio) {
                                               ?>
                                            <tbody>
                                               <tr>
-                                                 <td><?= $cardapio['idcardapio'] ?></td>
+                                                 <td hidden="hidden"><?= $cardapio['idcardapio'] ?></td>
                                                  <td><?= $cardapio['nomeprato'] ?></td>
                                                  <td><?= $cardapio['diasemana'] ?></td>
                                                  <td><?= $cardapio['dtalteracao'] ?></td>
@@ -83,6 +84,14 @@
                                            </tbody>
                                            <?php
                                               }
+                                            }else{ echo"
+                                              <tbody>
+                                                <tr>
+                                                  <p>Nenhum cárdapio cadastrado. Clique em + para adicionar um novo cárdapio.</p>
+                                                <tr>
+                                              </tbody>
+                                            ";
+                                               }
                                             ?>
                                         </table>
                                      </div>
