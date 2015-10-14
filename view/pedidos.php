@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 <?php require_once("cabecalho.php");
-=======
-<?php include("cabecalho.php");
->>>>>>> 886eb94294c3156be13894db054d50524369d7e2
 ?>
     <div id="wrapper">
 

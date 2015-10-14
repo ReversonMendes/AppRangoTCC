@@ -1,11 +1,6 @@
 <?php
-<<<<<<< HEAD
 require_once($_SERVER['DOCUMENT_ROOT']."/controller/conecta.php");
 require_once($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_login.php");
-=======
-include($_SERVER['DOCUMENT_ROOT']."/controller/conecta.php");
-include($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_login.php");
->>>>>>> 886eb94294c3156be13894db054d50524369d7e2
 
 require_once($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_conta.php");
 

@@ -1,14 +1,8 @@
 <?php 
-<<<<<<< HEAD
   require_once("cabecalho.php"); 
   require_once("menu.php");
   require_once($_SERVER['DOCUMENT_ROOT']."/controller/conecta.php");
   require_once($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_cardapios.php");
-=======
-  include("cabecalho.php"); 
-  include($_SERVER['DOCUMENT_ROOT']."/controller/conecta.php");
-  include($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_cardapios.php");
->>>>>>> 886eb94294c3156be13894db054d50524369d7e2
 ?>
     <div id="wrapper">
         <div id="page-wrapper">  
@@ -31,7 +25,6 @@
                                     <?php mostraAlerta("Danger"); ?>
                                   </div>
                                   <div class="panel-body">
-<<<<<<< HEAD
                                   <div class="col-lg-18">
                                     <div class="panel panel-primary">
                                       <div class="panel-heading">
@@ -41,70 +34,16 @@
                                       </div>
                                       <div class="panel-body">
 
-=======
-                                  <div class="col-lg-4">
-                                    <div class="panel panel-primary">
-                                        <div class="panel-heading">Marmita</div>
-                                        <div class="panel-body">
-                                          <form role="form" action="../model/valida_cardapios.php" method="post">
-                                             <div class="form-group">
-                                               <label>Nome do prato</label>
-                                               <input class="form-control" type="text" name="nomeprato" required>
-                                             </div>
-                                             <div class="form-group">
-                                                <label>Dia da Semana</label>
-                                                <select class="form-control" name="diasemana">
-                                                    <option value="segunda">Segunda-feira</option>
-                                                    <option value="terca">Terça-feira</option>
-                                                    <option value="quarta">Quarta-feira</option>
-                                                    <option value="quinta">Quinta-feira</option>
-                                                    <option value="sexta">Sexta-feira</option>
-                                                    <option value="sabado">Sábado</option>
-                                                    <option value="domingo">Domingo</option>
-                                                </select>
-                                            </div>
-                                            <div class="table-responsive">
-                                                <table class="table table-striped table-bordered table-hover" id='tabela_ingrediente'>
-                                                    <thead>
-                                                        <tr>
-                                                            <th>&nbsp;</th>
-                                                            <th>Ingredientes</th>
-                                                            <th>&nbsp;</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    </tbody>
-                                                </table>
-                                                <button type="button" class="btn btn-primary"  id='incluir' value='incluir' onclick='adiciona_ingrediente()'>Incluir</button>
-                                            </div>
-                                            <div class="form-group" align="center">
-                                              <button  type="submit"  class="btn btn-info">Gravar</button>
-                                            </div>
-                                          </form>
-                                        </div>
-                                      </div>
-                                  </div>
-                                  <div class="col-lg-8">
-                                    <div class="panel panel-primary">
-                                      <div class="panel-heading">Cardápios</div>
-                                      <div class="panel-body">
->>>>>>> 886eb94294c3156be13894db054d50524369d7e2
                                         <table class="table table-striped table-bordered table-hover" id="tabela_usuario" width="100%" cellspacing="0">
                                            <thead>
                                               <tr>
                                                  <th>#</th>
                                                  <th>Nome Prato</th>
                                                  <th>Dia Semana</th>
-<<<<<<< HEAD
                                                  <th>Data de Alteração</th>
                                                  <th>Ativo</th>
                                                  <th>Alterar</th>
                                                  <th>Excluir</th>
-=======
-                                                 <th>Data Alteração</th>
-                                                 <th>Ativo</th>
-                                                 <th>Alterar</th>
->>>>>>> 886eb94294c3156be13894db054d50524369d7e2
                                               </tr>
                                            </thead>
                                            <?php
@@ -128,7 +67,6 @@
                                                      ?>
                                                  </td>
                                                  <td align="center">
-<<<<<<< HEAD
                                                    <button type="button" class="btn btn-info lg" data-toggle="modal" data-target="#modalAlterarCardapio">
                                                     Alterar
                                                    </button>
@@ -138,12 +76,6 @@
                                                     Excluir
                                                    </button>
                                                  </td>
-=======
-                                                   <button type="button" class="btn btn-info lg">
-                                                    Alterar
-                                                   </button>
-                                                 </td>
->>>>>>> 886eb94294c3156be13894db054d50524369d7e2
                                               </tr>
                                            </tbody>
                                            <?php
@@ -156,7 +88,6 @@
                                   </div>
                                   </div>
                                 </div>
-<<<<<<< HEAD
                             </div>
                       </div>
                       <!--Tab 2-->
@@ -220,24 +151,6 @@
                             </form>
                         </div>
                       </div>
-=======
-                            </div>
-                      </div>
-                      <!--Tab 2-->
-<!--                       <div id="preco" class="tab-pane fade">
-                          <div class="panel panel-primary">
-                                <div class="panel-heading">Forma de pagamento</div>
-                                <div class="panel-body">
-                                  <div class="col-lg-6">
-                                      ------------
-
-                                          3
-                                      ------------
-                                  </div>
-                              </div>
-                            </div>
-                      </div> -->
->>>>>>> 886eb94294c3156be13894db054d50524369d7e2
                     </div>
                   </div>
 
@@ -314,8 +227,4 @@
         </div>
     </div>
   </div>
-<<<<<<< HEAD
 <?php require_once("rodape.php") ?>
-=======
-<?php include("rodape.php") ?>
->>>>>>> 886eb94294c3156be13894db054d50524369d7e2

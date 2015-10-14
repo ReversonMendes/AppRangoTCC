@@ -13,19 +13,11 @@
     </div>
 
     <ul class="nav navbar-top-links navbar-right">
-<<<<<<< HEAD
         <li>
             <a href="perfil.php" data-toggle="tooltip" data-placement="bottom" title="Perfil do Usuário"><i class="fa fa-user fa-fw"></i> <?= usuarioLogado() ?></a>
         </li>
         <li><a href="#" data-toggle="tooltip" data-placement="bottom" title="Configuração"><i class="fa fa-gear fa-fw"></i></a>
         </li>
-=======
-        <li><a href="perfil.php" data-toggle="tooltip" data-placement="bottom" title="Perfil do Usuário"><i class="fa fa-user fa-fw"></i></a>
-        </li>
-        <li><a href="#" data-toggle="tooltip" data-placement="bottom" title="Configuração"><i class="fa fa-gear fa-fw"></i></a>
-        </li>
-        <li class="divider"></li>
->>>>>>> 886eb94294c3156be13894db054d50524369d7e2
         <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Sair</a>
         </li>
     </ul>
@@ -45,23 +37,6 @@
                 <li>
                     <a href="entregas.php"><i class="fa fa-truck fa-fw"></i> Entregas</a>
                 </li>
-<<<<<<< HEAD
-=======
-                <li>
-                    <a href="#"><i class="fa fa-edit fa-fw"></i>Cadastros<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a href="cardapio2.php"> Cardápios</a>
-                        </li>
-                        <li>
-                            <a href="empresa.php"> Empresa</a>
-                        </li>
-                        <li>
-                            <a href="usuarios.php"> Usuário</a>
-                        </li>
-                    </ul>
-                </li>
->>>>>>> 886eb94294c3156be13894db054d50524369d7e2
             </ul>
         </div>
     </div>

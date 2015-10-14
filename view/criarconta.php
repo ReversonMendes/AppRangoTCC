@@ -93,15 +93,9 @@
           </div>
         </div>
     </div>
-<<<<<<< HEAD
 <?php require_once("rodape.php") ?>
 
 <!-- <script type="text/javascript">
-=======
-<?php include("rodape.php") ?>
-
-// <script type="text/javascript">
->>>>>>> 886eb94294c3156be13894db054d50524369d7e2
 //     $(document).ready(function valida(){
 //         $('#form').validate({
       
@@ -131,7 +125,4 @@
 //         });
 //     });
 // </script>
-<<<<<<< HEAD
 -->
-=======
->>>>>>> 886eb94294c3156be13894db054d50524369d7e2
