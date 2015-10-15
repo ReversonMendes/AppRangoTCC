@@ -71,9 +71,6 @@
                                                     <a class="btn btn-info lg" data-toggle="modal" data-target="#modalAlterarCardapio">
                                                         <i class="fa fa-pencil"></i>
                                                     </a>
-<!--                                                    <button type="button" class="btn btn-info lg" data-toggle="modal" data-target="#modalAlterarCardapio">
-                                                    Alterar <i class="fa fa-pencil-square-o"></i>
-                                                   </button> -->
                                                  </td>
                                                  <td align="center">
                                                     <a class="btn btn-danger lg">

@@ -7,17 +7,16 @@ require_once($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_usuario.php");
 //verifica se tá logado
 verificaUsuario();
 $usuariologado = buscaIdUsuario($conexao,usuarioLogado());
-
-$id = $_POST['id'];
-$nome = $_POST['nome'];
-$email = $_POST['email'];
-$datanascimento = $_POST['datanascimento'];
-$erro = 0;
+//recebe os valores
+$id =  isset($_POST['id']) ? $_POST['id'] : '';
+$nome =  isset($_POST['nome']) ? $_POST['nome'] : '';
+$email =  isset($_POST['email']) ? $_POST['email'] : '';
+$datanascimento =  isset($_POST['datanascimento']) ? $_POST['datanascimento'] : '';
 //formata a data
 $datanascimento = date("Y-m-d",strtotime(str_replace('/','-',$datanascimento))); 
 
-//Tem que validar se foi informado algum arquivo
-if(!isset($_FILES['arquivo']['tmp_name']) || !empty($_FILES['arquivo']['tmp_name'])) {
+// //Tem que validar se foi informado algum arquivo, vai ser alterado só a foto
+if(isset($_FILES['arquivo']) || !empty($_FILES['arquivo'])) {
 	// Lista de tipos de arquivos permitidos
 	$tiposPermitidos= array('image/gif', 'image/jpeg', 'image/pjpeg', 'image/png');
 	// Tamanho máximo (em bytes)
@@ -37,12 +36,10 @@ if(!isset($_FILES['arquivo']['tmp_name']) || !empty($_FILES['arquivo']['tmp_name
 	if ($arqError == 0) {
 	    // Verifica o tipo de arquivo enviado
 		if (array_search($arqType, $tiposPermitidos) === false) {
-			$erro = 1;
 			$_SESSION["Danger"] = "O tipo de arquivo enviado é inválido!";
 			header("Location: ../view/perfil.php");
 		// Verifica o tamanho do arquivo enviado
 		} else if ($arqSize > $tamanhoPermitido) {
-			$erro = 1;
 			$_SESSION["Danger"] = "O tamanho do arquivo enviado é maior que o limite!";
 			header("Location: ../view/perfil.php");
 		// Não houveram erros, move o arquivo
@@ -57,32 +54,29 @@ if(!isset($_FILES['arquivo']['tmp_name']) || !empty($_FILES['arquivo']['tmp_name
 			  //Grava no banco o nome do arquivo da foto do usuário
 			if ($upload == true) {
 			  	if(alteraFoto($conexao, $id, $foto)) {
-					// $_SESSION["Success"] = "Foto alterado com sucesso!";
-					// header("Location: ../view/perfil.php");
-					// die();
+					$_SESSION["Success"] = "Foto alterado com sucesso!";
+					header("Location: ../view/perfil.php");
+					die();
 				} else {
 					$erro = mysqli_error($conexao);
-					$erro = 1;
 					$_SESSION["Danger"] = "Os dados não foram alterado. erro:".$erro;
 					header("Location: ../view/perfil.php");
 					die();
 				}
 			}else{
-					$erro = 1;
 					$_SESSION["Danger"] = "Ocorreu algum erro com o upload, por favor tente novamente!";
 					header("Location: ../view/perfil.php");
 					die();
 	    	}
 		}		
 	}else{
-		$erro = 1;
 		$_SESSION["Danger"] = "Ocorreu algum erro com o upload, por favor tente novamente!";
 		header("Location: ../view/perfil.php");
 		die();
 	}
 }
 
-if($id > 0 and $erro < 1){
+if($id > 0){
 	if(alteraUsuario($conexao, $id, $nome,$datanascimento, $email)) {
 		$_SESSION["Success"] = "Dados alterado com sucesso!";
 		header("Location: ../view/perfil.php");

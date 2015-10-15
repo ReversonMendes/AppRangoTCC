@@ -26,7 +26,7 @@
         <div class="panel panel-info">
           <div class="panel-heading">Meus dados</div>
           <div class="panel-body">
-            <form role="form" action="../model/valida_usuario.php" method="post" enctype="multipart/form-data">
+            <form role="form" action="../model/valida_usuario.php" method="post">
                  <div class="form-group">
                        <input type="hidden" name="id" value="<?=$usuario['idusuario']?>">
                  </div>
@@ -47,25 +47,50 @@
                       <button  type="submit"  class="btn btn-info">Gravar</button>
                     </div>
                 </div>
+                <div class="col-lg-4">
+                  <div class="form-group">
+                       <input type="hidden" name="id" value="<?=$usuario['idusuario']?>">
+                  </div>
+                  <div class="form-group">
+                     <label>Usuário</label>
+                     <input class="form-control" type="text" name="usuario"  value="<?=$usuario['usuario']?>" required >
+                  </div>
+                  <div class="form-group">
+                     <label>Nova Senha</label>
+                     <input class="form-control" type="password" name="novasenha" value="" required>
+                  </div>
+                  <div class="form-group">
+                     <label>Confirmar Senha</label>
+                     <input class="form-control" type="password" name="confirmasenha" value="" required>
+                  </div>
+                </div>
+              </form>
+              <form role="form" action="../model/valida_usuario.php" method="post" enctype="multipart/form-data">
+                  <div class="form-group">
+                       <input type="hidden" name="id" value="<?=$usuario['idusuario']?>">
+                 </div>
                   <div class="row">
                     <div class="col-xs-6 col-md-3">
-                      <a class="thumbnail">
-                        <img src="../img/uploads/profile/<?= $usuario['foto']?>">
+                      <a class="">
+                        <img src="../img/uploads/profile/<?= $usuario['foto']?>" alt="Responsive image">
                       </a>
                       <div class="form-group">
-                        <label>Alterar imagem</label>
+                        <label>Escolher uma imagem</label>
                         <input type="file" name="arquivo">
+                      </div>
+                      <div class="form-group">
+                        <button  type="submit"  class="btn btn-success">Alterar imagem</button>
                       </div>
                     </div>
                   </div>
-            </form>
+              </form>
              </div>
           </div>
         </div>
         <div class="panel panel-info">
           <div class="panel-heading">Dados da minha empresa</div>
           <div class="panel-body">
-             <form role="form" action="../model/valida_empresa.php" method="post" enctype="multipart/form-data">
+             <form role="form" action="../model/valida_empresa.php" method="post">
                     <div class="form-group">
                        <input type="hidden" name="idempresa" value="<?=$empresa['idempresa']?>">
                     </div>
@@ -85,7 +110,10 @@
                         <div class="form-group">
                             <label>Endereço</label>
                             <input class="form-control" type="text" name="endereco" value="<?=$empresa['endereco']?>">
-                        </div>                    
+                        </div>
+                      <div class="form-group">
+                          <button type="submit" class="btn btn-info">Gravar</button>
+                      </div>                    
                   </div>
                   <div class="col-lg-4">
                         <div class="form-group">
@@ -105,19 +133,24 @@
                             <input class="form-control" type="email" name="email"  placeholder="Informe um endereço de Email válido" value="<?=$empresa['email']?>">
                         </div>
                   </div>
+                </form>
+                <form role="form" action="../model/valida_empresa.php" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                       <input type="hidden" name="idempresa" value="<?=$empresa['idempresa']?>">
+                    </div>
                   <div class="row">
                     <div class="col-xs-6 col-md-3">
                       <a class="thumbnail">
                         <img src="../img/uploads/empresas_logos/<?=$empresa['logo']?>">
                       </a>
                       <div class="form-group">
-                        <label>Alterar imagem</label>
+                        <label>Escolher o logo</label>
                         <input type="file" name="logo">
                       </div>
+                      <div class="form-group">
+                        <button  type="submit"  class="btn btn-success">Alterar imagem</button>
+                      </div>
                     </div>
-                  </div>
-                  <div class="form-group">
-                    <button type="submit" class="btn btn-info">Gravar</button>
                   </div>
               </form>
           </div>
@@ -125,7 +158,7 @@
         <div class="panel panel-danger">
           <div class="panel-heading">Conta</div>
           <div class="panel-body">
-
+<!-- 
             <div class="col-lg-6">
                <form role="form" action="../model/valida_conta.php" method="post">
                   <div class="form-group">
@@ -147,7 +180,7 @@
                     <button type="submit" class="btn btn-info">Gravar</button>
                   </div>
               </form>
-            </div>
+            </div> -->
 
             <div class="col-lg-6">
               <div align="right">
