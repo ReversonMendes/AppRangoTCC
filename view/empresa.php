@@ -2,14 +2,14 @@
     require_once("cabecalho.php");
 ?>
 
-<style>
+<!--<style>
 body {
     background-image: url('../img/background.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
     background-size: 100% 100%;
-}
+} -->
 </style>
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog">

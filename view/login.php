@@ -2,7 +2,7 @@
     require_once("cabecalho.php");
 ?>
 
-<style>
+<!--<style>
 body {
     background-image: url('../img/background.png');
     background-repeat: no-repeat;
@@ -10,7 +10,7 @@ body {
     background-position: center;
     background-size: 100% 100%;
 }
-</style>
+</style> -->
 
     <div class="container">
         <div class="row">
