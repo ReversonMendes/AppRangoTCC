@@ -3,6 +3,7 @@
   require_once("menu.php");
   require_once($_SERVER['DOCUMENT_ROOT']."/controller/conecta.php");
   require_once($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_precos.php");
+  require_once($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_formapagamento.php");
   setlocale(LC_MONETARY,"pt_BR", "ptb");
 ?>
     <div id="wrapper">
@@ -155,7 +156,7 @@
                     </div>
                   </div>
 
-                  <!-- Modal Inserir Preco-->
+                  <!-- Modal Inserir/Alterar Forma de pagamento-->
                   <div class="modal fade" id="modalInserirformapgt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content ">
@@ -169,64 +170,50 @@
                                  <label>Descrição da forma de pagamento</label>
                                  <input class="form-control" type="text" name="descrpagamento" placeholder="Ex: Dinheiro" >
                                </div>
-                               <div class="form-group">
-                                 <label>Peso</label>
-                                 <input class="form-control" type="text" id="peso" name="peso">
                               <div class="form-group" align="center">
                                 <button  type="submit"  class="btn btn-info">Gravar</button>
                               </div>
                             </form>
-                            <table class="table table-striped table-bordered table-hover" id="tabela_Preco" width="100%" cellspacing="0">
-                                       <thead>
-                                          <tr>
-                                             <th hidden="hidden">#</th>
-                                             <th>Descrição</th>
-                                             <th>Tipo Moeda</th>
-                                             <th>Data Alteração</th>
-                                             <th>Alterar</th>
-                                             <th>Excluir</th>
-                                          </tr>
-                                       </thead>
-                                       <?php
-                                          $usuario  = buscaIdUsuario($conexao, usuarioLogado());
-                                          $precos = listaPrecos($conexao,$usuario['idempresa']);
-                                          if(count($precos) > 0)       {
-                                          foreach ($precos as $Preco) {
-                                          ?>
-                                       <tbody>
-                                          <tr>
-                                             <td hidden="hidden"><?= $Preco['idpreco'] ?></td>
-                                             <td><?= $Preco['tamanho'] ?></td>
-                                             <td><?= $Preco['peso'] ?> Kg</td>
-                                             <td><?= $Preco['gramatura'] ?></td>
-                                             <td><?=  date_format(date_create($Preco['dtalteracao']), 'd/m/Y H:i:s');  ?></td>
-                                             <td align="center">
-                                                <a class="btn btn-info btn-sm" id="btnAlterarPreco" data-toggle="modal" data-target="#modalAlterarPreco" data-whatever="<?= $Preco['idpreco'] ?>">
-                                                <i class="fa fa-pencil"></i>
-                                                </a>
-                                             </td>
-                                             <td align="center">
-                                                <form action="../model/excluir_precos.php" method="post">
-                                                   <input type="hidden" name="id" value="<?= $Preco['idpreco'] ?>">
-                                                   <button type="submit" class="btn btn-danger btn-sm" id="excluir">
-                                                   <i class="fa fa-minus"></i>
-                                                   </button>
-                                                </form>
-                                             </td>
-                                          </tr>
-                                       </tbody>
-                                       <?php
-                                          }
-                                          }else{ echo"
-                                          <tbody>
-                                            <tr>
-                                              <p>Nenhum preço cadastrado. Clique em + para adicionar um novo preço.</p>
-                                            <tr>
-                                          </tbody>
-                                          ";
-                                           }
-                                          ?>
-                                    </table>
+                            <table class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
+                               <thead>
+                                  <tr>
+                                     <th hidden="hidden">#</th>
+                                     <th>Descrição</th>
+                                     <th>Excluir</th>
+                                  </tr>
+                               </thead>
+                               <?php
+                                  $usuario  = buscaIdUsuario($conexao, usuarioLogado());
+                                  $formas = listaFormaPagamento($conexao,$usuario['idempresa']);
+                                  if(count($formas) > 0)       {
+                                  foreach ($formas as $forma) {
+                                  ?>
+                               <tbody>
+                                  <tr>
+                                     <td hidden="hidden"><?= $forma['idformapagamento'] ?></td>
+                                     <td><?= $forma['descrpagamento'] ?></td>
+                                     <td align="center">
+                                        <form action="../model/excluir_formapagamento.php" method="post">
+                                           <input type="hidden" name="id" value="<?= $forma['idformapagamento'] ?>">
+                                           <button type="submit" class="btn btn-danger btn-sm" id="excluir">
+                                           <i class="fa fa-minus"></i>
+                                           </button>
+                                        </form>
+                                     </td>
+                                  </tr>
+                               </tbody>
+                               <?php
+                                  }
+                                  }else{ echo"
+                                  <tbody>
+                                    <tr>
+                                      <p>Nenhuma forma de pagamento cadastrada.</p>
+                                    <tr>
+                                  </tbody>
+                                  ";
+                                   }
+                                  ?>
+                            </table>
                         </div>
                       </div>
                     </div>

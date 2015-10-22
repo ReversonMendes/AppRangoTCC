@@ -29,25 +29,25 @@ verificaUsuario();
 //   echo "POST parameter '$key' has '$value'";
 //  }
 
-// if($idpreco < 0){ 
-		if(inserePreco($conexao, $tamanho, $gramatura,$peso, $valor, $idusuario,$idempresa)) {
-			$_SESSION["Success"] = "Preço gravado com Sucesso!.";
-			header("Location: ../view/precos.php");
-		} else {
-			$erro = mysqli_error($conexao);
-			$_SESSION["Danger"] = "Preço não foi gravado. erro:".$erro;
-			header("Location: ../view/precos.php");
-		}
-// }else{ 
-// 	if(alteraCardapio($conexao, $tamanho, $peso, $idusuario, $flaginativo, $idempresa,$ingredientes)) {
-// 		$_SESSION["Success"] = "Cardápio alterado com Sucesso!.";
-// 		header("Location: ../view/cardapios.php");
-// 	} else {
-// 		$erro = mysqli_error($conexao);
-// 		$_SESSION["Danger"] = "Cardápio não foi alterado. erro:".$erro;
-// 		header("Location: ../view/cardapios.php");
-// 	}
-// }
+ if($idpreco <= 0){ 
+	if(inserePreco($conexao, $tamanho, $gramatura,$peso, $valor, $idusuario,$idempresa)) {
+		$_SESSION["Success"] = "Preço gravado com Sucesso!.";
+		header("Location: ../view/precos.php");
+	} else {
+		$erro = mysqli_error($conexao);
+		$_SESSION["Danger"] = "Preço não foi gravado. erro:".$erro;
+		header("Location: ../view/precos.php");
+	}
+}else{ 
+	if(alteraPreco($conexao, $idpreco, $tamanho, $peso,$gramatura,$valor, $idusuario, $idempresa)) {
+		$_SESSION["Success"] = "Preço alterado com Sucesso!.";
+		header("Location: ../view/precos.php");
+	} else {
+		$erro = mysqli_error($conexao);
+		$_SESSION["Danger"] = "Preço não foi alterado. erro:".$erro;
+		header("Location: ../view/precos.php");
+	}
+}
 
 die();
 ?>

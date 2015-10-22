@@ -41,7 +41,7 @@
                     </div>
                     <div class="form-group">
                        <label>Data nascimento</label>
-                       <input class="form-control" type="date" id="datanascimento" name="datanascimento" value="<?=date('d-m-Y',strtotime(str_replace('-','/',$usuario['dtnascimento'])))?>" required placeholder="yyyy-MM-dd">
+                       <input class="form-control" type="date" id="datanascimento" name="datanascimento" value="<?= date_format(date_create($usuario['dtnascimento']), 'd/m/Y');?>" required placeholder="yyyy-MM-dd">
                     </div>
                     <div class="form-group">
                       <button  type="submit"  class="btn btn-info">Gravar</button>
@@ -195,4 +195,12 @@
       </div>
     </div>
   </div>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    if(!$.browser.mozilla){
+        document.getElementById("datanascimento").defaultValue = "<?= $usuario['dtnascimento']?>";
+    }
+   
+  });
+  </script>
 <?php require_once("rodape.php") ?>

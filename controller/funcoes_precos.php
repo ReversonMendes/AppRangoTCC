@@ -16,8 +16,8 @@ function inserePreco($conexao, $tamanho, $gramatura,$peso, $valor, $idusuario,$i
 }
 
 
-function alteraPreco($conexao, $nomeprato, $diasemana, $idusuario, $flaginativo, $idempresa,$ingredientes) {
-	$query = "update usuario set nome = '{$nome}', email = '{$email}', dtnascimento = {$datanascimento}, usuario= '{$usuario}', senha = '{$senha}', flaginativo = {$flaginativo} where idusuario = '{$id}'";
+function alteraPreco($conexao, $idpreco, $tamanho, $peso,$gramatura,$valor, $idusuario, $idempresa) {
+	$query = "update precos set tamanho = '{$tamanho}', peso = {$peso}, gramatura = '{$gramatura}', valor= {$valor}, dtalteracao = NOW() where idpreco = '{$idpreco}' and idempresa='{$idempresa}'";
 	return mysqli_query($conexao, $query);
 }
 

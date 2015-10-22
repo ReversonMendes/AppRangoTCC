@@ -16,7 +16,12 @@ $ingredientes = isset($_POST['ingrediente']) ? $_POST['ingrediente'] : '';
 
 verificaUsuario();
 
-if($idcardapio < 0){ 
+
+foreach($_POST as $key => $value) {
+  echo "POST parameter '$key' has '$value'";
+ }
+
+if($idcardapio <= 0){ 
 	if(insereCardapio($conexao, $nomeprato, $diasemana, $idusuario, $flaginativo, $idempresa,$ingredientes)) {
 		$_SESSION["Success"] = "Cardápio gravado com Sucesso!.";
 		header("Location: ../view/cardapios.php");
