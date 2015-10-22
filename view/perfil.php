@@ -71,8 +71,8 @@
                  </div>
                   <div class="row">
                     <div class="col-xs-6 col-md-3">
-                      <a class="">
-                        <img src="../img/uploads/profile/<?= $usuario['foto']?>" alt="Responsive image">
+                      <a class="thumbnail">
+                        <img src="../img/uploads/profile/<?= $usuario['foto']?>" >
                       </a>
                       <div class="form-group">
                         <label>Escolher uma imagem</label>

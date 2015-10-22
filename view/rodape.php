@@ -6,6 +6,8 @@ $(document).ready(function(){
        $("#data").mask("99/99/9999");
        $("#datanascimento").mask("99/99/9999");
        $("#telefone").mask("(999)9999-9999");
+       $("#valor").maskMoney({prefix:'R$ ', thousands:'.', decimal:',', symbolStay: true});
+       $("#peso").maskMoney({suffix:' Kg', thousands:'.', decimal:',', symbolStay: true, precision:3});
 });
 </script>
 

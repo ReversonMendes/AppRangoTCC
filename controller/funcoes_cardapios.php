@@ -1,7 +1,8 @@
 <?php
-function listaCardapios($conexao) {
+
+function listaCardapios($conexao, $idempresa) {
 	$cardapios = array();
-	$resultado = mysqli_query($conexao, "select * from cardapios");
+	$resultado = mysqli_query($conexao, "select * from cardapios where idempresa = '{$idempresa}'");
 	while($cardapio = mysqli_fetch_assoc($resultado)) {
 		array_push($cardapios, $cardapio);
 	}
@@ -34,10 +35,10 @@ function insereIngredientes($conexao, $idcardapio, $ingredientes, $idempresa) {
 }
 
 
-// function alteraUsuario($conexao, $id,  $nome, $usuario, $senha, $datanascimento, $email, $ativado) {
-// 	$query = "update usuario set nome = '{$nome}', email = '{$email}', dtnascimento = {$datanascimento}, usuario= '{$usuario}', senha = '{$senha}', flaginativo = {$ativado} where idusuario = '{$id}'";
-// 	return mysqli_query($conexao, $query);
-// }
+function alteraCardapio($conexao, $idcardapio, $nomeprato, $diasemana, $idusuario, $flaginativo, $idempresa,$ingredientes) {
+	$query = "update cardapios set nomeprato = '{$nomeprato}', diasemana = '{$diasemana}', dtalteracao = NOW(), flaginativo = {$flaginativo} where idcardapio = {$idcardapio} and idusuario = {$idusuario} and idempresa = {$idempresa}";
+	return mysqli_query($conexao, $query);
+}
 
 
 function buscaCardapios($conexao, $id,$idempresa) {
@@ -56,13 +57,16 @@ function buscaIngredientes($conexao, $id,$idempresa) {
 	return $ingredientes;
 }
 
-// function validaUsuario($conexao, $nome, $email) {
-// 	$query = "select * from usuario where nome = '{$nome}' or email = '{$email}'";
-// 	$resultado = mysqli_query($conexao, $query);
-// 	return mysqli_fetch_assoc($resultado);
-// }
+function excluirCardapios($conexao, $id) {
+	if(mysqli_query($conexao, "delete from cardapio_ingredientes where idcardapio = {$id}")){
+		$query = "delete from cardapios where idcardapio = {$id}";
+		return mysqli_query($conexao, $query);
+	}else{
+		return false;
+	}
+}
 
-// function removeUsuario($conexao, $id) {
-// 	$query = "delete from usuarios where idusuario = {$id}";
+// function ExcluirIngredientes($conexao, $id) {
+// 	$query = "delete from cardapio_ingredientes where idingrediente = {$id}";
 // 	return mysqli_query($conexao, $query);
 // }

@@ -13,7 +13,7 @@ function adiciona_ingrediente(){
 
 		novaCelula = novaLinha.insertCell(1);
 		novaCelula.align = "center";
-		novaCelula.innerHTML = "<a class='btn btn-danger' id='excluir' value='excluir' onclick='deleta_ingrediente("+totals+")'><i class='fa fa-minus'></i></a>";
+		novaCelula.innerHTML = "<a class='btn btn-danger' id='excluiringr' value='excluir' onclick='deleta_ingrediente("+totals+")'><i class='fa fa-minus'></i></a>";
 }
 
 function adiciona_ingredientealt(total){
@@ -30,13 +30,17 @@ function adiciona_ingredientealt(total){
 
 		novaCelula = novaLinha.insertCell(1);
 		novaCelula.align = "center";
-		novaCelula.innerHTML = "<a class='btn btn-danger' id='excluir' value='excluir' onclick='deleta_ingrediente("+totals+")'><i class='fa fa-minus'></i></a>";
+		novaCelula.innerHTML = "<a class='btn btn-danger' id='excluiringr' value='excluir' onclick='deleta_ingrediente("+totals+")'><i class='fa fa-minus'></i></a>";
 }
 
 
 
 function deleta_ingrediente(linha){
 	document.getElementById("tabela_ingrediente").deleteRow(linha);
+}
+
+function deleta_ingredientealt(linha){
+	document.getElementById("tabela_ingredientealt").deleteRow(linha);
 }
 
 function retorna_ingrediente(linha){

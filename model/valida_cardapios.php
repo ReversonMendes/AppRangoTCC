@@ -6,25 +6,34 @@ require_once($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_cardapios.php");
 
 $usuario = buscaIdUsuario($conexao,usuarioLogado());
 
-$nomeprato = $_POST['nomeprato'];
-$diasemana = $_POST['diasemana'];
+$idcardapio = isset($_POST['idcardapio']) ? $_POST['idcardapio'] : 0;
+$nomeprato = isset($_POST['nomeprato']) ? $_POST['nomeprato'] : '';
+$diasemana = isset($_POST['diasemana']) ? $_POST['diasemana'] : '';
 $idusuario = $usuario['idusuario'];
 $flaginativo = "false";
 $idempresa = $usuario['idempresa'];
-$ingredientes = $_POST['ingrediente'];
+$ingredientes = isset($_POST['ingrediente']) ? $_POST['ingrediente'] : '';
 
-// foreach($_POST as $field => $value) {
-//     echo " Campo: ".$field." Valor: ".$value;
-// }
 verificaUsuario();
 
-if(insereCardapio($conexao, $nomeprato, $diasemana, $idusuario, $flaginativo, $idempresa,$ingredientes)) {
-	$_SESSION["Success"] = "Cardápio gravado com Sucesso!.";
-	header("Location: ../view/cardapios.php");
-} else {
-	$erro = mysqli_error($conexao);
-	$_SESSION["Danger"] = "Cardápio não foi gravado. erro:".$erro;
-	header("Location: ../view/cardapios.php");
+if($idcardapio < 0){ 
+	if(insereCardapio($conexao, $nomeprato, $diasemana, $idusuario, $flaginativo, $idempresa,$ingredientes)) {
+		$_SESSION["Success"] = "Cardápio gravado com Sucesso!.";
+		header("Location: ../view/cardapios.php");
+	} else {
+		$erro = mysqli_error($conexao);
+		$_SESSION["Danger"] = "Cardápio não foi gravado. erro:".$erro;
+		header("Location: ../view/cardapios.php");
+	}
+}else{ 
+	if(alteraCardapio($conexao, $idcardapio, $nomeprato, $diasemana, $idusuario, $flaginativo, $idempresa,$ingredientes)) {
+		$_SESSION["Success"] = "Cardápio alterado com Sucesso!.";
+		header("Location: ../view/cardapios.php");
+	} else {
+		$erro = mysqli_error($conexao);
+		$_SESSION["Danger"] = "Cardápio não foi alterado. erro:".$erro;
+		header("Location: ../view/cardapios.php");
+	}
 }
 
 die();

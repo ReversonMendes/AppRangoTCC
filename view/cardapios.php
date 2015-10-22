@@ -3,6 +3,7 @@
   require_once("menu.php");
   require_once($_SERVER['DOCUMENT_ROOT']."/controller/conecta.php");
   require_once($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_cardapios.php");
+  require_once($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_login.php");
 ?>
     <div id="wrapper">
         <div id="page-wrapper">  
@@ -11,7 +12,7 @@
                 <!-- Tab-->
                    <ul class="nav nav-tabs">
                       <li class="active"><a data-toggle="tab" href="#marmita">Marmitas</a></li>
-                      <li><a data-toggle="tab" href="#preco">Preços</a></li>
+                      <li><a  href="precos.php">Preços</a></li>
                     </ul>
                 <!--Conteudo dos Tab-->
                     <div class="tab-content">
@@ -29,12 +30,12 @@
                                     <div class="panel panel-primary">
                                       <div class="panel-heading">
                                         <a class="btn btn-success" data-toggle="modal" data-target="#modalInserirCardapio">
-                                          <i class="fa fa-plus"></i>
+                                          <i class="fa fa-plus"> Incluir Cadápios de Marmitas</i>
                                         </a>
                                       </div>
                                       <div class="panel-body">
 
-                                        <table class="table table-striped table-bordered table-hover" id="tabela_usuario" width="100%" cellspacing="0">
+                                        <table class="table table-striped table-bordered table-hover" id="tabela_cardapio" width="100%" cellspacing="0">
                                            <thead>
                                               <tr>
                                                  <th hidden="hidden">#</th>
@@ -47,7 +48,8 @@
                                               </tr>
                                            </thead>
                                            <?php
-                                              $cardapios = listaCardapios($conexao);
+                                              $usuario  = buscaIdUsuario($conexao, usuarioLogado());
+                                              $cardapios = listaCardapios($conexao,$usuario["idempresa"]);
                                               if(count($cardapios) > 0)       {
                                               foreach ($cardapios as $cardapio) {
                                               ?>
@@ -56,7 +58,7 @@
                                                  <td hidden="hidden"><?= $cardapio['idcardapio'] ?></td>
                                                  <td><?= $cardapio['nomeprato'] ?></td>
                                                  <td><?= $cardapio['diasemana'] ?></td>
-                                                 <td><?= $cardapio['dtalteracao'] ?></td>
+                                                 <td><?=  date_format(date_create($cardapio['dtalteracao']), 'd/m/Y H:i:s');  ?></td>
                                                  <td><?php if($cardapio['flaginativo']){ ?>
                                                        Inativo
                                                     <?php
@@ -68,14 +70,17 @@
                                                      ?>
                                                  </td>
                                                  <td align="center">
-                                                    <a class="btn btn-info lg" data-toggle="modal" data-target="#modalAlterarCardapio">
+                                                    <a class="btn btn-info btn-sm" id="btnAlterarCardapio" data-toggle="modal" data-target="#modalAlterarCardapio" data-whatever="<?= $cardapio['idcardapio'] ?>">
                                                         <i class="fa fa-pencil"></i>
                                                     </a>
                                                  </td>
                                                  <td align="center">
-                                                    <a class="btn btn-danger lg">
-                                                         <i class="fa fa-minus"></i>
-                                                    </a>
+                                                      <form action="../model/excluir_cardapios.php" method="post">
+                                                        <input type="hidden" name="id" value="<?= $cardapio['idcardapio'] ?>">
+                                                          <button type="submit" class="btn btn-danger btn-sm" id="excluir">
+                                                              <i class="fa fa-minus"></i>
+                                                           </button>
+                                                      </form>
                                                  </td>
                                               </tr>
                                            </tbody>
@@ -99,21 +104,6 @@
                                 </div>
                             </div>
                       </div>
-                      <!--Tab 2-->
-                      <div id="preco" class="tab-pane fade">
-                          <div class="panel panel-primary">
-                                <div class="panel-heading">Forma de pagamento</div>
-                                <div class="panel-body">
-                                  <div class="col-lg-6">
-                                      ------------
-
-                                          3
-                                      ------------
-                                  </div>
-                              </div>
-                            </div>
-                      </div>
-                    </div>
 
                   <!-- Modal Inserir Cardapio-->
                   <div class="modal fade" id="modalInserirCardapio" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -165,71 +155,15 @@
                     </div>
                   </div>
 
-                  <!-- Modal alterar Cardapio-->
+                   <!-- Modal alterar Cardapio-->
                   <div class="modal fade" id="modalAlterarCardapio" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content ">
                         <div class="modal-header ">
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                          <h4 class="modal-title" id="myModalLabel">Cadastrar Cardápio de Marmita</h4>
+                          <h4 class="modal-title" id="myModalLabel">Alterar Cardápio de Marmita</h4>
                         </div>
-                            <div class="modal-body">
-                              <form role="form" action="../model/valida_cardapios.php" method="post">
-                                <?php
-                                   $id = $cardapio['idcardapio'];
-                                   $idempresa = $cardapio['idempresa'];
-                                   $cardapioAlt = buscaCardapios($conexao, $id,$idempresa);
-                                   $ingredientesAlt = buscaIngredientes($conexao, $id,$idempresa);
-                                   $ativo = $cardapioAlt['flaginativo' ] ? "checked = 'checked'" : "";
-                                ?>
-                              <div class="form-group">
-                                  <input type="hidden" name="id" value="<?=$cardapioAlt['idcardapio']?>">
-                               </div>
-                               <div class="form-group">
-                                 <label>Nome do prato</label>
-                                 <input class="form-control" type="text" name="nomeprato" value="<?=$cardapioAlt['nomeprato']?>" required>
-                               </div>
-                               <div class="form-group">
-                                  <label>Dia da Semana</label>
-                                  <select class="form-control" name="diasemana">
-                                      <option value="segunda" selected= "<?=$cardapioAlt['diasemana']?> == segunda ? 'selected' : ''">Segunda-feira</option>
-                                      <option value="terca"   selected= "<?=$cardapioAlt['diasemana']?> == terca ? 'selected' : ''">Terça-feira</option>
-                                      <option value="quarta"  selected= "<?=$cardapioAlt['diasemana']?> == quarta ? 'selected' : ''">Quarta-feira</option>
-                                      <option value="quinta"  selected= "<?=$cardapioAlt['diasemana']?> == quinta ? 'selected' : ''" >Quinta-feira</option>
-                                      <option value="sexta"   selected= "<?=$cardapioAlt['diasemana']?> == sexta ? 'selected' : ''" >Sexta-feira</option>
-                                      <option value="sabado"  selected= "<?=$cardapioAlt['diasemana']?> == sabado ? 'selected' : ''">Sábado</option>
-                                      <option value="domingo" selected= "<?=$cardapioAlt['diasemana']?> == domingo ? 'selected' : ''">Domingo</option>
-                                  </select>
-                              </div>
-                              <div class="table-responsive">
-                                  <table class="table table-striped table-bordered table-hover" id='tabela_ingredientealt'>
-                                      <thead>
-                                          <tr>
-                                              <th>Ingredientes</th>
-                                              <th>&nbsp;</th>
-                                          </tr>
-                                      </thead>
-                                      <tbody>
-                                      <?php foreach ($ingredientesAlt as $key =>$ingrediente) { ?>
-                                        <tr>
-                                          <td>
-                                              <input class='form-control' type='text' name="ingrediente[<?=$key?>]" value="<?=$ingrediente['nomeingrediente']?>" />
-                                          </td>
-                                          <td align="center">
-                                              <a class='btn btn-danger' id='excluir' value='excluir' onclick='deleta_ingrediente("+totals+")'><i class='fa fa-minus'></i></a>
-                                          </td>
-                                        </tr>
-                                        <?php }?>
-                                      </tbody>
-                                  </table>
-                                  <a class="btn btn-success" id='incluir' value='incluir' onclick='adiciona_ingredientealt(<?=$key?>)'>
-                                          <i class="fa fa-plus"></i>
-                                  </a>
-                              </div>
-                              <div class="form-group" align="center">
-                                <button  type="submit"  class="btn btn-info">Gravar</button>
-                              </div>
-                            </form>
+                        <div id="dadosCardapio" class="modal-body">
                         </div>
                       </div>
                     </div>
@@ -239,5 +173,15 @@
             </div>
         </div>
     </div>
-  </div>
+    <script type="text/javascript">
+      $('#modalAlterarCardapio').on('show.bs.modal', function (event) {
+          var button = $(event.relatedTarget)
+          var idcardapio = button.data('whatever')
+          var modal = $(this)
+           $.post('../model/alterar_cardapio.php', { id: idcardapio}, function(retorno){
+               //$("#modalAlterarCardapio").modal({ backdrop: 'static' }); 
+               $("#dadosCardapio").html(retorno);
+           });
+        })
+    </script>
 <?php require_once("rodape.php") ?>
