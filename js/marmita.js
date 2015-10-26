@@ -1,14 +1,15 @@
 totals =0;
 
 function adiciona_ingrediente(){
-		totals++
 		tbl = document.getElementById("tabela_ingrediente")
+		totals = totalLinha(tbl);
+		totals++
 
 		var novaLinha = tbl.insertRow(-1);
 		var novaCelula;
 
 		novaCelula = novaLinha.insertCell(0);
-		novaCelula.innerHTML = "<input class='form-control' type='text' name='ingrediente["+totals+"]'/>";
+		novaCelula.innerHTML = "<input class='form-control' type='text' name='ingrediente["+totals+"]' required/>";
 
 
 		novaCelula = novaLinha.insertCell(1);
@@ -16,34 +17,37 @@ function adiciona_ingrediente(){
 		novaCelula.innerHTML = "<a class='btn btn-danger' id='excluiringr' value='excluir' onclick='deleta_ingrediente("+totals+")'><i class='fa fa-minus'></i></a>";
 }
 
-function adiciona_ingredientealt(total){
-		totals = total;
+function adiciona_ingredientealt(){
+		tbl = document.getElementById("tabela_ingredientealt");
+		totals = totalLinha(tbl);
 		totals++
-		tbl = document.getElementById("tabela_ingredientealt")
+		
 
 		var novaLinha = tbl.insertRow(-1);
 		var novaCelula;
 
 		novaCelula = novaLinha.insertCell(0);
-		novaCelula.innerHTML = "<input class='form-control' type='text' name='ingrediente["+totals+"]'/>";
+		novaCelula.innerHTML = "<input class='form-control' type='text' name='ingrediente["+totals+"]' required/>";
 
 
 		novaCelula = novaLinha.insertCell(1);
 		novaCelula.align = "center";
-		novaCelula.innerHTML = "<a class='btn btn-danger' id='excluiringr' value='excluir' onclick='deleta_ingrediente("+totals+")'><i class='fa fa-minus'></i></a>";
+		novaCelula.innerHTML = "<a class='btn btn-danger' id='excluiringr' value='excluir' onclick='deleta_ingredientealt("+totals+")'><i class='fa fa-minus'></i></a>";
 }
 
 
 
 function deleta_ingrediente(linha){
+	alert(linha);
 	document.getElementById("tabela_ingrediente").deleteRow(linha);
 }
 
 function deleta_ingredientealt(linha){
+	alert(linha);
 	document.getElementById("tabela_ingredientealt").deleteRow(linha);
 }
 
-function retorna_ingrediente(linha){
-	document.getElementById("ingrediente");
-	console.log(document.getElementById("ingrediente"))
+function totalLinha(tbl) {
+    var x = tbl.getElementsByTagName("tr");
+    return x.length-1;
 }

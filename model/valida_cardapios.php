@@ -10,19 +10,19 @@ $idcardapio = isset($_POST['idcardapio']) ? $_POST['idcardapio'] : 0;
 $nomeprato = isset($_POST['nomeprato']) ? $_POST['nomeprato'] : '';
 $diasemana = isset($_POST['diasemana']) ? $_POST['diasemana'] : '';
 $idusuario = $usuario['idusuario'];
-$flaginativo = "false";
+$flagativo = "false";
 $idempresa = $usuario['idempresa'];
-$ingredientes = isset($_POST['ingrediente']) ? $_POST['ingrediente'] : '';
+$ingredientes = isset($_POST['ingrediente']) ? $_POST['ingrediente'] : '[]';
 
 verificaUsuario();
 
 
-foreach($_POST as $key => $value) {
-  echo "POST parameter '$key' has '$value'";
- }
+// foreach($_POST as $key => $value) {
+//   echo "POST parameter '$key' has '$value'";
+//  }
 
 if($idcardapio <= 0){ 
-	if(insereCardapio($conexao, $nomeprato, $diasemana, $idusuario, $flaginativo, $idempresa,$ingredientes)) {
+	if(insereCardapio($conexao, $nomeprato, $diasemana, $idusuario, $flagativo, $idempresa,$ingredientes)) {
 		$_SESSION["Success"] = "Cardápio gravado com Sucesso!.";
 		header("Location: ../view/cardapios.php");
 	} else {
@@ -31,7 +31,8 @@ if($idcardapio <= 0){
 		header("Location: ../view/cardapios.php");
 	}
 }else{ 
-	if(alteraCardapio($conexao, $idcardapio, $nomeprato, $diasemana, $idusuario, $flaginativo, $idempresa,$ingredientes)) {
+
+   if(alteraCardapio($conexao, $idcardapio, $nomeprato, $diasemana, $idusuario, $flagativo, $idempresa,$ingredientes)) {
 		$_SESSION["Success"] = "Cardápio alterado com Sucesso!.";
 		header("Location: ../view/cardapios.php");
 	} else {

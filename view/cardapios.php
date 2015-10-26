@@ -42,7 +42,7 @@
                                                  <th>Nome Prato</th>
                                                  <th>Dia Semana</th>
                                                  <th>Data de Alteração</th>
-                                                 <th>Ativo</th>
+                                                 <th>Status</th>
                                                  <th>Alterar</th>
                                                  <th>Excluir</th>
                                               </tr>
@@ -59,12 +59,12 @@
                                                  <td><?= $cardapio['nomeprato'] ?></td>
                                                  <td><?= $cardapio['diasemana'] ?></td>
                                                  <td><?=  date_format(date_create($cardapio['dtalteracao']), 'd/m/Y H:i:s');  ?></td>
-                                                 <td><?php if($cardapio['flaginativo']){ ?>
-                                                       Inativo
+                                                 <td><?php if($cardapio['flagativo']){ ?>
+                                                       Plublicado
                                                     <?php
                                                        } else {
                                                     ?>
-                                                       Ativo
+                                                       Não Publicado
                                                     <?php
                                                       }
                                                      ?>
@@ -137,6 +137,16 @@
                                           <tr>
                                               <th>Ingredientes</th>
                                               <th>&nbsp;</th>
+                                          </tr>
+                                          <tr>
+                                            <td>
+                                                <input class="form-control" name="ingrediente[1]" required="" type="text">
+                                            </td>
+                                            <td align="center">
+                                                <a class="btn btn-danger" id="excluiringr" value="excluir" onclick="deleta_ingrediente(1)">
+                                                  <i class="fa fa-minus"></i>
+                                                </a>
+                                            </td>
                                           </tr>
                                       </thead>
                                       <tbody>

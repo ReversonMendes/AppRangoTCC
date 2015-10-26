@@ -11,7 +11,7 @@
        $idempresa = buscaIdUsuario($conexao, usuarioLogado());;
        $cardapioAlt = buscaCardapios($conexao, $id,$idempresa['idempresa']);
        $ingredientesAlt = buscaIngredientes($conexao, $id,$idempresa['idempresa']);
-       $ativo = $cardapioAlt['flaginativo' ] ? "checked = 'checked'" : "";
+       $ativo = $cardapioAlt['flagativo' ] ? "checked = 'checked'" : "";
     ?>
   <div class="form-group">
       <input type="hidden" name="idcardapio" value="<?=$cardapioAlt['idcardapio']?>">
@@ -47,13 +47,13 @@
                   <input class='form-control' type='text' name="ingrediente[<?=$key?>]" value="<?=$ingrediente['nomeingrediente']?>" />
               </td>
               <td align="center">
-                  <a class='btn btn-danger' id='excluir' value='excluir' onclick='deleta_ingredientealt("+totals+")'><i class='fa fa-minus'></i></a>
+                  <a class='btn btn-danger' id='excluir' value='excluir' onclick='deleta_ingredientealt(<?=$key + 1?>)'><i class='fa fa-minus'></i></a>
               </td>
             </tr>
             <?php }?>
           </tbody>
       </table>
-      <a class="btn btn-success" id='incluir' value='incluir' onclick='adiciona_ingredientealt(<?=$key?>)'>
+      <a class="btn btn-success" id='incluir' value='incluir' onclick='adiciona_ingredientealt()'>
               <i class="fa fa-plus"></i>
       </a>
   </div>

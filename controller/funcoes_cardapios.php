@@ -9,15 +9,20 @@ function listaCardapios($conexao, $idempresa) {
 	return $cardapios;
 }
 
-function insereCardapio($conexao, $nomeprato, $diasemana, $idusuario, $flaginativo, $idempresa,$ingredientes) {
-	$query = "insert into cardapios (nomeprato, diasemana, dtalteracao, idusuario,flaginativo, idempresa) values ('{$nomeprato}', '{$diasemana}', NOW(),{$idusuario},{$flaginativo},{$idempresa})";
+function insereCardapio($conexao, $nomeprato, $diasemana, $idusuario, $flagativo, $idempresa,$ingredientes) {
+	$query = "insert into cardapios (nomeprato, diasemana, dtalteracao, idusuario,flagativo, idempresa) values ('{$nomeprato}', '{$diasemana}', NOW(),{$idusuario},{$flagativo},{$idempresa})";
 	//Grava cardapio
 	if(mysqli_query($conexao, $query)){
 		// //retorna o id
 		// return $idCardapio;
 		$idcardapio = mysqli_insert_id($conexao);
 		//Grava ingredientes
-		return insereIngredientes($conexao, $idcardapio, $ingredientes, $idempresa);
+		if(count($ingredientes) > 0 ){
+			return insereIngredientes($conexao, $idcardapio, $ingredientes, $idempresa);
+		}else{
+			return true;
+		}
+
 	}else{
 		//retorna erro
 		return false;
@@ -35,9 +40,22 @@ function insereIngredientes($conexao, $idcardapio, $ingredientes, $idempresa) {
 }
 
 
-function alteraCardapio($conexao, $idcardapio, $nomeprato, $diasemana, $idusuario, $flaginativo, $idempresa,$ingredientes) {
-	$query = "update cardapios set nomeprato = '{$nomeprato}', diasemana = '{$diasemana}', dtalteracao = NOW(), flaginativo = {$flaginativo} where idcardapio = {$idcardapio} and idusuario = {$idusuario} and idempresa = {$idempresa}";
-	return mysqli_query($conexao, $query);
+function alteraCardapio($conexao, $idcardapio, $nomeprato, $diasemana, $idusuario, $flagativo, $idempresa,$ingredientes) {
+	//atualiza dados do cardapio
+	$query = "update cardapios set nomeprato = '{$nomeprato}', diasemana = '{$diasemana}', dtalteracao = NOW(), flagativo = {$flagativo} where idcardapio = {$idcardapio} and idusuario = {$idusuario} and idempresa = {$idempresa}";
+	
+	if(mysqli_query($conexao, $query)){
+		//elimina os ingredientes
+		if(excluirIngredientes($conexao, $idcardapio,$idempresa )){
+			//insere novamente
+			return 
+			insereIngredientes($conexao, $idcardapio, $ingredientes, $idempresa);
+		}else{
+			return false;
+		}
+	}else{
+		return false;	
+	}
 }
 
 
@@ -45,6 +63,15 @@ function buscaCardapios($conexao, $id,$idempresa) {
 	$query = "select * from cardapios WHERE idcardapio = {$id} and idempresa = {$idempresa}";
 	$resultado = mysqli_query($conexao, $query) or die(mysql_error());
 	return mysqli_fetch_assoc($resultado);
+}
+
+function buscaAllCardapios($conexao, $idempresa) {
+	$cardapios = array();
+	$resultado = mysqli_query($conexao, "select * from cardapios where idempresa = '{$idempresa}'");
+	while($cardapio = mysqli_fetch_assoc($resultado)) {
+		array_push($cardapios, $cardapio);
+	}
+	return $cardapios;
 }
 
 function buscaIngredientes($conexao, $id,$idempresa) {
@@ -66,7 +93,18 @@ function excluirCardapios($conexao, $id) {
 	}
 }
 
-// function ExcluirIngredientes($conexao, $id) {
-// 	$query = "delete from cardapio_ingredientes where idingrediente = {$id}";
-// 	return mysqli_query($conexao, $query);
-// }
+function excluirIngredientes($conexao, $idcardapio,$idempresa ) {
+	$query = "delete from cardapio_ingredientes where idcardapio = {$idcardapio} and idempresa = {$idempresa}";
+	return mysqli_query($conexao, $query);
+}
+
+function validaPublicacao($conexao,$idempresa){
+	$query = "select count(*)  as total from cardapios where flagativo = true and idempresa = {$idempresa}";
+	$resultado = mysqli_query($conexao, $query) or die(mysql_error());
+	return mysqli_fetch_assoc($resultado);
+}
+
+function publicarCardapio($conexao,$idcardapio, $idempresa){
+	$query = "update cardapios set flagativo = true where idcardapio = {$idcardapio} and idempresa = {$idempresa}";
+	return mysqli_query($conexao, $query);
+}
