@@ -38,12 +38,10 @@ function adiciona_ingredientealt(){
 
 
 function deleta_ingrediente(linha){
-	alert(linha);
 	document.getElementById("tabela_ingrediente").deleteRow(linha);
 }
 
 function deleta_ingredientealt(linha){
-	alert(linha);
 	document.getElementById("tabela_ingredientealt").deleteRow(linha);
 }
 

@@ -51,7 +51,7 @@
                                     </div>
                                     <div>
                                     <?php if( $publicado['total'] <= 0) { 
-                                        echo "Nenhum Cardápio Publicado";
+                                        echo "Não Publicado";
                                         }else{
                                          echo $publicado['total']." Cardápio Publicado";
                                         }
@@ -160,10 +160,8 @@
 
  <script type="text/javascript">
  function publicar(){
-     
       $('#modalPublicarCardapio').on('show.bs.modal', function (event) {
-      //  alert("Batatinha");
-           $.post('../model/publicar_cardapio.php', {acao:'publicar'}, function(retorno){
+           $.post('../model/lista_cardapio_publicar.php', {acao:'publicar'}, function(retorno){
                $("#dadosCardapio").html(retorno);
            });
         }); 
