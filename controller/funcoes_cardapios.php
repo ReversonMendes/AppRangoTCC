@@ -108,3 +108,8 @@ function publicarCardapio($conexao,$idcardapio, $idempresa){
 	$query = "update cardapios set flagativo = true where idcardapio = {$idcardapio} and idempresa = {$idempresa}";
 	return mysqli_query($conexao, $query);
 }
+
+function desPublicarCardapio($conexao,$idcardapio, $idempresa){
+	$query = "update cardapios set flagativo = false where idcardapio = {$idcardapio} and idempresa = {$idempresa}";
+	return mysqli_query($conexao, $query);
+}
