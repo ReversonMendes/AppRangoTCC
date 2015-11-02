@@ -1,4 +1,4 @@
-<?php include("cabecalho.php"); ?>
+<?php require_once("cabecalho.php"); ?>
  ?>
         <div id="page-wrapper">
             <div class="row">
@@ -203,4 +203,4 @@
             <!-- /.row -->
         </div>
         <!-- /#page-wrapper -->
-<?php include($_SERVER['DOCUMENT_ROOT']."/rodape.php") ?>
+<?php require_once($_SERVER['DOCUMENT_ROOT']."/rodape.php") ?>

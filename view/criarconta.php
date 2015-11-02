@@ -1,50 +1,17 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <title>MarmitApp</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- MetisMenu CSS -->
-    <link href="../css/metisMenu.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="../css/sb-admin-2.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- jQuery -->
-    <script src="../js/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../js/bootstrap.min.js"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="../dist/js/sb-admin-2.js"></script>
-</head>
-
 <?php
-    require_once("mostra_alerta.php");
+    require_once("cabecalho.php");
 ?>
-<body>
   <div class="container">
       <div class="row">
           <div class="col-md-4 col-md-offset-4">
+            <?php mostraAlerta("Danger"); ?>
+            <?php mostraAlerta("Success"); ?>
               <div class="login-panel panel panel-default">
                   <div class="panel-heading">
                       <h3 class="panel-title">Criar conta em MarmitApp</h3>
                   </div>
                   <div class="panel-body">
-                    <?php mostraAlerta("danger"); ?>
-                    <?php mostraAlerta("success"); ?>
-                      <form role="form" action="../model/valida_conta.php" method="post">
+                      <form id="form" role="form" action="../model/valida_conta.php" method="post" name="conta">
                         <div class="form-group">
                            <label>Nome completo</label>
                            <input class="form-control" type="text" name="nome" required>
@@ -79,4 +46,35 @@
           </div>
         </div>
     </div>
-<?php include("rodape.php") ?>
+<?php require_once("rodape.php") ?>
+
+  <script type="text/javascript">
+    $(document).ready(function valida(){
+        $('#form').validate({
+      
+            rules:{
+                senha: {
+                    required: true
+                },
+                confirmasenha:{
+                    required: true,
+                    equalTo: "#senha"
+                },
+        
+      },
+        
+            messages:{
+
+                senha: {
+                    required: "O campo senha é obrigatório."
+                },
+                confirmasenha:{
+                    required: "O campo confirmação de senha é obrigatório.",
+                    equalTo: "O campo confirmação de senha deve ser idêntico ao campo senha."
+                },
+        
+      },
+ 
+        });
+    });
+</script>

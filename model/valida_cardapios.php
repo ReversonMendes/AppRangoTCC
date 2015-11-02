@@ -1,26 +1,46 @@
 <?php
-require_once("funcoes_cardapios.php");
-include($_SERVER['DOCUMENT_ROOT']."/funcoes_login.php");
+require_once($_SERVER['DOCUMENT_ROOT']."/controller/conecta.php");
+require_once($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_login.php");
+
+require_once($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_cardapios.php");
+
 $usuario = buscaIdUsuario($conexao,usuarioLogado());
 
-$nomeprato = $_POST['nomeprato'];
-$diasemana = $_POST['diasemana'];
+$idcardapio = isset($_POST['idcardapio']) ? $_POST['idcardapio'] : 0;
+$nomeprato = isset($_POST['nomeprato']) ? $_POST['nomeprato'] : '';
+$diasemana = isset($_POST['diasemana']) ? $_POST['diasemana'] : '';
 $idusuario = $usuario['idusuario'];
-$flaginativo = "false";
+$flagativo = "false";
 $idempresa = $usuario['idempresa'];
+$ingredientes = isset($_POST['ingrediente']) ? $_POST['ingrediente'] : '[]';
 
-foreach($_POST as $field => $value) {
-    echo " Campo: ".$field." Valor: ".$value;
+verificaUsuario();
+
+
+// foreach($_POST as $key => $value) {
+//   echo "POST parameter '$key' has '$value'";
+//  }
+
+if($idcardapio <= 0){ 
+	if(insereCardapio($conexao, $nomeprato, $diasemana, $idusuario, $flagativo, $idempresa,$ingredientes)) {
+		$_SESSION["Success"] = "Cardápio gravado com Sucesso!.";
+		header("Location: ../view/cardapios.php");
+	} else {
+		$erro = mysqli_error($conexao);
+		$_SESSION["Danger"] = "Cardápio não foi gravado. erro:".$erro;
+		header("Location: ../view/cardapios.php");
+	}
+}else{ 
+
+   if(alteraCardapio($conexao, $idcardapio, $nomeprato, $diasemana, $idusuario, $flagativo, $idempresa,$ingredientes)) {
+		$_SESSION["Success"] = "Cardápio alterado com Sucesso!.";
+		header("Location: ../view/cardapios.php");
+	} else {
+		$erro = mysqli_error($conexao);
+		$_SESSION["Danger"] = "Cardápio não foi alterado. erro:".$erro;
+		header("Location: ../view/cardapios.php");
+	}
 }
-// verificaUsuario();
-//
-// if(insereCardapio($conexao, $nomeprato, $diasemana, $idusuario, $flaginativo, $idempresa)) {
-// 	$_SESSION["success"] = "Cardápio gravado com Sucesso!.";
-// 	header("Location: cad_cardapios.php");
-// } else {
-// 	$erro = mysqli_error($conexao);
-// 	$_SESSION["danger"] = "Cardápio não foi gravado. erro:".$erro;
-// 	header("Location: cad_cardapios.php");
-// }
 
+die();
 ?>

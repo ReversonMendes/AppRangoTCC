@@ -24,7 +24,7 @@ function usuarioEstaLogado() {
 
 function verificaUsuario() {
   if(!usuarioEstaLogado()) {
-  	$_SESSION["danger"] = "Você não tem acesso a esta funcionalidade.";
+  	$_SESSION["Danger"] = "Você não tem acesso a esta funcionalidade.";
  	header("Location: index.php");
  	die();
   }
