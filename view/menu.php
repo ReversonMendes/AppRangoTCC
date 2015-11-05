@@ -38,9 +38,6 @@
                 <li>
                     <a href="entregas.php"><i class="fa fa-truck fa-fw"></i> Entregas</a>
                 </li>
-                 <li>
-                    <a href="../api/listaPrecos.php"><i class="fa fa-truck fa-fw"></i> Ingrediente</a>
-                </li>
             </ul>
         </div>
     </div>
