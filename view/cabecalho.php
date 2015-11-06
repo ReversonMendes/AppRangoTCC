@@ -18,9 +18,6 @@
     <!-- Custom CSS -->
     <link href="../css/sb-admin-2.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link href="../css/custom.css" rel="stylesheet">
-
     <!-- Custom Fonts -->
     <link href="../lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 

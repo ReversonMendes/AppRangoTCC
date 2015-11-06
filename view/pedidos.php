@@ -14,14 +14,20 @@
         <div class="col-lg-18">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    DataTables Advanced Tables
+                   Pedidos
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
-                     <table class="table table-striped table-bordered table-hover" id="tabela_pedido" width="100%" cellspacing="0" class="display">
+                <form method="post" action="exemplo.html" id="frm-filtro">
+                    <p>
+                      <label for="pesquisar">Pesquisar</label>
+                      <input type="text" id="pesquisar" name="pesquisar" size="30" />
+                    </p>
+                  </form>
+                     <table class="table table-striped table-bordered table-hover" id="tabela_pedido"  width="100%" cellspacing="0" class="display">
                        <thead>
                           <tr>
-                             <th><input type="checkbox" value="1" id="marcar-todos" name="marcar-todos" /></th>
+                             <th>&nbsp;</th>
                              <th>Idpedido</th>
                              <th>Nome Cliente</th>
                              <th>Cardápio</th>
@@ -72,7 +78,7 @@
                         }else{ echo"
                           <tbody>
                             <tr>
-                              <p>Nenhum cárdapio cadastrado. Clique em + para adicionar um novo cárdapio.</p>
+                              <p>Nenhum pedido foi realizado hoje.</p>
                             <tr>
                           </tbody>
                         ";
@@ -95,25 +101,45 @@
 </div>
 <!-- /.row -->
 </div>
-<script>
-  $(document).ready( function () {
-    $('#tabela_pedido').DataTable({
-        "scrollY":        "500px",
-        "scrollCollapse": true,
-        "paging":         false,
-        columnDefs: [ {
-            targets: [ 0 ],
-            orderData: [ 0, 1 ]
-        }, {
-            targets: [ 1 ],
-            orderData: [ 1, 0 ]
-        }, {
-            targets: [ 4 ],
-            orderData: [ 4, 0 ]
-        } ]
+    <script>
+ $(function(){
+      
+      $('table > tbody > tr:odd').addClass('odd');
+      
+      $('table > tbody > tr').hover(function(){
+        $(this).toggleClass('hover');
+      });
+      
+      // $('#marcar-todos').click(function(){
+      //   $('table > tbody > tr > td > :checkbox')
+      //     .attr('checked', $(this).is(':checked'))
+      //     .trigger('change');
+      // });
+      
+      $('table > tbody > tr > td > :checkbox').bind('click change', function(){
+        var tr = $(this).parent().parent();
+        if($(this).is(':checked')) $(tr).addClass('selected');
+        else $(tr).removeClass('selected');
+      });
+      
+      $('form').submit(function(e){ e.preventDefault(); });
+      
+      $('#pesquisar').keydown(function(){
+        var encontrou = false;
+        var termo = $(this).val().toLowerCase();
+        $('table > tbody > tr').each(function(){
+          $(this).find('td').each(function(){
+            if($(this).text().toLowerCase().indexOf(termo) > -1) encontrou = true;
+          });
+          if(!encontrou) $(this).hide();
+          else $(this).show();
+          encontrou = false;
+        });
+      });
+    });
+    
+    </script>
 
-    } );
-} );
-</script>
+   
 
    

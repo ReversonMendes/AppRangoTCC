@@ -354,4 +354,8 @@ table.dataTable thead .sorting:after {
     color: #df8a13;
 }
 
+table tbody tr.selected td{
+  background-color:#a9f5a9!important;
+}
+
 
