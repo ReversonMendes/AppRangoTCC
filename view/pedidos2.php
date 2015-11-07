@@ -42,21 +42,10 @@ var dataSet = [
 	<?php
       $usuario  = buscaIdUsuario($conexao, usuarioLogado());
       $pedidos = listaPedidos($conexao,$usuario["idempresa"]);
-      if(count($pedidos) > 0)       {
+     
       foreach ($pedidos as $pedido) {
-      
-      	echo '["'.$pedido["idpedido"].'", "'.$pedido["nomecliente"].'", "'.$pedido["nomeprato"].'", "'.$pedido["quantidade"].'", "'.$pedido["observacao"].'", "'.$pedido["cidade"].'", "'.$pedido["descrpagamento"].'", "'.$pedido["status"].'"],'.
-
+      	echo '["'.$pedido["idpedido"].'", "'.$pedido["nomecliente"].'", "'.$pedido["nomeprato"].'", "'.$pedido["quantidade"].'", "'.$pedido["observacao"].'", "'.$pedido["cidade"].'", "'.$pedido["descrpagamento"].'", "'.$pedido["status"].'"],';
       }
-    }else{ echo"
-      <tbody>
-        <tr>
-          <p>Nenhum pedido foi realizado hoje.</p>
-        <tr>
-      </tbody>
-    ";
-       }
-    ?>
 ];
  
 $(document).ready(function() {
