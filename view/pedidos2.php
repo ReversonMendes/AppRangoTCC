@@ -39,15 +39,20 @@
 
 <script type="text/javascript">
 var dataSet = [
-	<?php
-      $usuario  = buscaIdUsuario($conexao, usuarioLogado());
-      $pedidos = listaPedidos($conexao,$usuario["idempresa"]);
-     
-      foreach ($pedidos as $pedido) {
-      	echo '["'.$pedido["idpedido"].'", "'.$pedido["nomecliente"].'", "'.$pedido["nomeprato"].'", "'.$pedido["quantidade"].'", "'.$pedido["observacao"].'", "'.$pedido["cidade"].'", "'.$pedido["descrpagamento"].'", "'.$pedido["status"].'"],';
-      }
-];
+</script>
+
+<?php
+  $usuario  = buscaIdUsuario($conexao, usuarioLogado());
+  $pedidos = listaPedidos($conexao,$usuario["idempresa"]);
  
+  foreach ($pedidos as $pedido) {
+  	echo '["'.$pedido["idpedido"].'", "'.$pedido["nomecliente"].'", "'.$pedido["nomeprato"].'", "'.$pedido["quantidade"].'", "'.$pedido["observacao"].'", "'.$pedido["cidade"].'", "'.$pedido["descrpagamento"].'", "'.$pedido["status"].'"],';
+  }
+?>
+
+<script type="text/javascript">
+];
+
 $(document).ready(function() {
     $('#example').DataTable( {
         data: dataSet,
@@ -63,6 +68,7 @@ $(document).ready(function() {
         ]
     } );
 } );
+
 </script>
 
 <!-- jQuery -->
