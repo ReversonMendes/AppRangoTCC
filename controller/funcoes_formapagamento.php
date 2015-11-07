@@ -16,18 +16,8 @@ function insereFormaPagamento($conexao, $descrpagamento, $idusuario,$idempresa) 
 }
 
 
-// function alteraPreco($conexao, $nomeprato, $diasemana, $idusuario, $flaginativo, $idempresa,$ingredientes) {
-// 	$query = "update forma_pagamento set nome = '{$nome}', email = '{$email}', dtnascimento = {$datanascimento}, usuario= '{$usuario}', senha = '{$senha}', flaginativo = {$flaginativo} where idusuario = '{$id}'";
-// 	return mysqli_query($conexao, $query);
-// }
-
 function excluirFormaPagamento($conexao, $id,$idusuario,$idempresa) {	
 	$query = "delete from forma_pagamento where idformapagamento = {$id} and idusuario = {$idusuario} and idempresa = {$idempresa}";
 	return mysqli_query($conexao, $query);
 }
 
-// function buscaPrecos($conexao, $id, $idempresa) {
-// 	$query = "select * from forma_pagamento WHERE idpreco = {$id} and idempresa = {$idempresa}";
-// 	$resultado = mysqli_query($conexao, $query) or die(mysql_error());
-// 	return mysqli_fetch_assoc($resultado);
-// }
