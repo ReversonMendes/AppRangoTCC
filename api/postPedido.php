@@ -68,9 +68,9 @@
 													     {$idempresa})");
 		if($resultado){
 			$idpedido = mysqli_insert_id($conexao);
-			echo mysql_real_escape_string($idpedido);
+			echo $idpedido;
 		}else{
-			echo mysql_real_escape_string(0);
+			echo 0;
 		}
 		
 	}

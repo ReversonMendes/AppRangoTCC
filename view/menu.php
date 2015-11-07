@@ -30,7 +30,7 @@
                     <a href="painel.php"><i class="fa fa-dashboard fa-fw"></i> Home</a>
                 </li>
                 <li>
-                    <a href="pedidos.php"><i class="fa fa-list fa-fw"></i> Pedidos</a>
+                    <a href="pedidos2.php"><i class="fa fa-list fa-fw"></i> Pedidos</a>
                 </li>
                 <li>
                     <a href="cardapios.php"><i class="fa fa-table fa-fw"></i> Cardápios</a>

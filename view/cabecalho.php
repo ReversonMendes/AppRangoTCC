@@ -47,6 +47,13 @@
 
     <!-- Meus script -->
     <script src="../js/marmita.js"></script>
+
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+
+    
+    
+
 </head>
 <body>
 

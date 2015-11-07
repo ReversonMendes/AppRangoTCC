@@ -354,12 +354,28 @@ table.dataTable thead .sorting:after {
     color: #df8a13;
 }
 
+table{
+  width:600px;
+  border:1px solid #ccc;
+}
+
+table thead th{
+  background-color:#ad2525;
+  padding:6px;
+  color:#fff;
+  text-align:center;
+  font-size:14px;
+}
 
 table thead th.header{
   cursor:pointer;
 }
 
-
+table tbody td{
+  padding:6px;
+  text-align:center;
+  color:#333;
+}
 
 table tbody tr.odd td{
   background-color:#ffffcc;
@@ -372,6 +388,7 @@ table tbody tr.hover td{
 table tbody tr.selected td{
   background-color:#a9f5a9!important;
 }
+
 
 .pagedisplay{
 	width:40px;
