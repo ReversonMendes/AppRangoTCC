@@ -104,6 +104,12 @@ function validaPublicacao($conexao,$idempresa){
 	return mysqli_fetch_assoc($resultado);
 }
 
+function verificaStatus($conexao,$idempresa,$idcardapio){
+	$query = "select flagativo from cardapios where idcardapio = {$idcardapio} and idempresa = {$idempresa}";
+	$resultado = mysqli_query($conexao, $query) or die(mysql_error());
+	return mysqli_fetch_assoc($resultado);
+}
+
 function publicarCardapio($conexao,$idcardapio, $idempresa){
 	$query = "update cardapios set flagativo = true where idcardapio = {$idcardapio} and idempresa = {$idempresa}";
 	return mysqli_query($conexao, $query);

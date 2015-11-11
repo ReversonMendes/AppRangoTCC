@@ -40,8 +40,6 @@
 
 <script type="text/javascript">
 var dataSet = [
-
-
 <?php
   $usuario  = buscaIdUsuario($conexao, usuarioLogado());
   $pedidos = listaPedidos($conexao,$usuario["idempresa"]);
@@ -55,9 +53,41 @@ var dataSet = [
 
 $(document).ready(function() {
     $('#example').DataTable( {
+                "oTableTools": {
+            "sSwfPath": "../../js/DataTables-1.9.4/extras/TableTools/media/swf/copy_csv_xls_pdf.swf",
+            "aButtons": [
+                {
+                    "sExtends": "xls",
+                    "sButtonText": "Exportar para Excel",
+                    "sTitle": "Usuarios",
+                    "mColumns": [0, 1, 2, 3]
+                },
+                {
+                    "sExtends": "pdf",
+                    "sButtonText": "Exportar para PDF",
+                    "sTitle": "Usuarios",
+                    "sPdfOrientation": "landscape",
+                    "mColumns": [0, 1, 2, 3]
+                }
+            ]
+        },
+        "oLanguage": {
+            "sLengthMenu": "Mostrar _MENU_ registros por página",
+            "sZeroRecords": "Nenhum registro encontrado",
+            "sInfo": "Mostrando _START_ / _END_ de _TOTAL_ registro(s)",
+            "sInfoEmpty": "Mostrando 0 / 0 de 0 registros",
+            "sInfoFiltered": "(filtrado de _MAX_ registros)",
+            "sSearch": "Pesquisar: ",
+            "oPaginate": {
+                "sFirst": "Início",
+                "sPrevious": "Anterior",
+                "sNext": "Próximo",
+                "sLast": "Último"
+            }
+        },
         data: dataSet,
         columns: [
-            { title: "Idpedido" },
+            { title: "#" },
             { title: "Nome Cliente" },
             { title: "Cardápio" },
             { title: "Quantidade" },
@@ -65,6 +95,11 @@ $(document).ready(function() {
             { title: "Endereço" },
             { title: "Forma de Pagamento" },
             { title: "Status" }
+
+        ],
+        "aoColumnDefs": [
+            {"sType": "num-html", "aTargets": [0]}
+
         ]
     } );
 } );
@@ -73,3 +108,4 @@ $(document).ready(function() {
 
 <!-- jQuery -->
 <script src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.10/js/dataTables.bootstrap.min.js"></script>

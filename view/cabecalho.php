@@ -20,6 +20,8 @@
 
     <!-- Custom Fonts -->
     <link href="../lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- simplePagination -->
+    <link href="../css/simplePagination.css" rel="stylesheet" type="text/css">
 
     <!-- jQuery -->
     <script src="../js/jquery.min.js"></script>
@@ -48,11 +50,7 @@
     <!-- Meus script -->
     <script src="../js/marmita.js"></script>
 
-    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
-
-    
-    
+    <script src="../js/jquery.simplePagination.js"></script>
 
 </head>
 <body>

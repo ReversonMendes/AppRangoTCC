@@ -28,7 +28,7 @@
 		$quantidade  = $dataobject->dados->quantidade;
 		$idcardapio  = $dataobject->dados->idcardapio;
 		$observacao  = $dataobject->dados->remover;
-		$status      = 'Pendente';
+		$status      = 'P';
 		$complemento = $dataobject->dados->localentrega->complemento;
 		$bairro      = $dataobject->dados->localentrega->bairro;
 		$rua      = $dataobject->dados->localentrega->rua;

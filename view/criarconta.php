@@ -46,13 +46,14 @@
           </div>
         </div>
     </div>
-<?php require_once("rodape.php") ?>
-
-  <script type="text/javascript">
+    <script type="text/javascript">
     $(document).ready(function valida(){
         $('#form').validate({
       
             rules:{
+              usuario: {
+                    required: true
+                },
                 senha: {
                     required: true
                 },
@@ -64,6 +65,9 @@
       },
         
             messages:{
+                usuario: {
+                    required: "O campo usuario é obrigatório."
+                },
 
                 senha: {
                     required: "O campo senha é obrigatório."
@@ -78,3 +82,6 @@
         });
     });
 </script>
+<?php require_once("rodape.php") ?>
+
+  

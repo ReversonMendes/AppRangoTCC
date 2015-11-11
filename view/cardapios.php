@@ -24,6 +24,7 @@
                                   <div class="panel-heading">
                                     <?php mostraAlerta("Success"); ?>
                                     <?php mostraAlerta("Danger"); ?>
+                                    <?php mostraAlerta("Warning"); ?>
                                   </div>
                                   <div class="panel-body">
                                   <div class="col-lg-18">

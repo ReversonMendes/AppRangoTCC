@@ -31,15 +31,20 @@ if($idcardapio <= 0){
 		header("Location: ../view/cardapios.php");
 	}
 }else{ 
-
-   if(alteraCardapio($conexao, $idcardapio, $nomeprato, $diasemana, $idusuario, $flagativo, $idempresa,$ingredientes)) {
-		$_SESSION["Success"] = "Cardápio alterado com Sucesso!.";
+ 	$status = verificaStatus($conexao,$idempresa,$idcardapio);
+ 	if($status['flagativo']){
+ 		$_SESSION["Warning"] = "Cardápio não pode ser alterado pois o mesmo está publicado.";
 		header("Location: ../view/cardapios.php");
-	} else {
-		$erro = mysqli_error($conexao);
-		$_SESSION["Danger"] = "Cardápio não foi alterado. erro:".$erro;
-		header("Location: ../view/cardapios.php");
-	}
+ 	}else{
+	 	if(alteraCardapio($conexao, $idcardapio, $nomeprato, $diasemana, $idusuario, $flagativo, $idempresa,$ingredientes)) {
+			$_SESSION["Success"] = "Cardápio alterado com Sucesso!.";
+			header("Location: ../view/cardapios.php");
+		} else {
+			$erro = mysqli_error($conexao);
+			$_SESSION["Danger"] = "Cardápio não foi alterado. erro:".$erro;
+			header("Location: ../view/cardapios.php");
+		}
+ 	}
 }
 
 die();
