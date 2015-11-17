@@ -20,7 +20,7 @@ body {
                    <?php mostraAlerta("Danger"); ?>
               </div>
               <!-- <div class="modal-body"> -->
-                <form role="form" action="../model/valida_empresa.php" method="post">
+                <form id="form" role="form" action="../model/valida_empresa.php" method="post">
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label>Nome</label>
@@ -71,4 +71,33 @@ body {
     $(document).ready(function(){
         $("#myModal").modal({backdrop: false});
     });
+
+    $(document).ready(function valida(){
+        $('#form').validate({
+      
+            rules:{
+                nome: {
+                    required: true
+                },
+                email:{
+                  email: true,
+                  required: true
+                }
+        
+      },
+        
+            messages:{
+                nome: {
+                    required: "O campo nome é obrigatório."
+                },                
+                email:{
+                  email: "Por favor digite um email válido.",
+                  required: "O campo email é obrigatório"
+                }
+        
+      },
+ 
+        });
+    });
+
 </script>

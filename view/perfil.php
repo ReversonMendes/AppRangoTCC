@@ -10,7 +10,6 @@
 <div id="page-wrapper">
    <div class="row">
       <div class="col-lg-12">
-         <h2 class="page-heading">Perfil</h2>
             <?php mostraAlerta("Danger"); ?>
             <?php mostraAlerta("Success"); ?>
       </div>
@@ -22,11 +21,17 @@
            $usuariologado = buscaIdUsuario($conexao,usuarioLogado());
            $usuario = buscaUsuarios($conexao, $usuariologado["idusuario"]);
            $empresa = buscaEmpresa($conexao, $usuario['idempresa']);
+           if(is_null($usuario['foto'])){
+              $usuario['foto'] = "avatar.png";
+           }
+          if(is_null($empresa['logo'])){
+              $empresa['logo'] = "semimagem.jpg";
+           }
         ?>
         <div class="panel panel-info">
           <div class="panel-heading">Meus dados</div>
           <div class="panel-body">
-            <form role="form" action="../model/valida_usuario.php" method="post">
+            <form id="formUser" role="form" action="../model/valida_usuario.php" method="post">
                  <div class="form-group">
                        <input type="hidden" name="id" value="<?=$usuario['idusuario']?>">
                  </div>
@@ -57,11 +62,11 @@
                   </div>
                   <div class="form-group">
                      <label>Nova Senha</label>
-                     <input class="form-control" type="password" name="novasenha" value="" required>
+                     <input class="form-control" type="password" id="novasenha" name="novasenha" value="" required>
                   </div>
                   <div class="form-group">
                      <label>Confirmar Senha</label>
-                     <input class="form-control" type="password" name="confirmasenha" value="" required>
+                     <input class="form-control" type="password" id="confirmasenha" name="confirmasenha" value="" required>
                   </div>
                 </div>
               </form>
@@ -158,30 +163,6 @@
         <div class="panel panel-danger">
           <div class="panel-heading">Conta</div>
           <div class="panel-body">
-<!-- 
-            <div class="col-lg-6">
-               <form role="form" action="../model/valida_conta.php" method="post">
-                  <div class="form-group">
-                       <input type="hidden" name="id" value="<?=$usuario['idusuario']?>">
-                  </div>
-                  <div class="form-group has-error has-feedback">
-                     <label  for="inputError2">Usuário</label>
-                     <input class="form-control" type="text" name="usuario"  value="<?=$usuario['usuario']?>" required >
-                  </div>
-                  <div class="form-group">
-                     <label>Nova Senha</label>
-                     <input class="form-control" type="password" name="novasenha" value="" required>
-                  </div>
-                  <div class="form-group">
-                     <label>Confirmar Senha</label>
-                     <input class="form-control" type="password" name="confirmasenha" value="" required>
-                  </div>
-                  <div class="form-group">
-                    <button type="submit" class="btn btn-info">Gravar</button>
-                  </div>
-              </form>
-            </div> -->
-
             <div class="col-lg-6">
               <div align="right">
               <label>Lembre-se ao clicar em excluir minha conta, a sua conta será desativada e todos os dados da sua empresa serão perdidos.</label>
@@ -196,11 +177,51 @@
     </div>
   </div>
   <script type="text/javascript">
-  $(document).ready(function(){
+  $(document).ready(function(){  
     if(!$.browser.mozilla){
         document.getElementById("datanascimento").defaultValue = "<?= $usuario['dtnascimento']?>";
     }
    
   });
+  $(document).ready(function valida(){
+        $('#formUser').validate({
+      
+            rules:{
+                nome: {
+                    required: true
+                },
+                usuario: {
+                    required: true
+                },
+                confirmasenha:{
+                    equalTo: "#novasenha"
+                },
+                email:{
+                  email: true,
+                  required: true
+                }
+        
+      },
+        
+            messages:{
+                nome: {
+                    required: "O campo nome é obrigatório."
+                },
+                usuario: {
+                    required: "O campo usuario é obrigatório."
+                },
+                confirmasenha:{
+                    required: "O campo confirmação de senha é obrigatório.",
+                    equalTo: "O campo confirmação de senha deve ser idêntico a nova senha."
+                },
+                email:{
+                  email: "Por favor digite um email válido.",
+                  required: "O campo email é obrigatório"
+                }
+        
+      },
+ 
+        });
+    });
   </script>
 <?php require_once("rodape.php") ?>

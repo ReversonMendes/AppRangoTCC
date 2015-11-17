@@ -56,3 +56,15 @@ function alteraPedido($conexao, $idpedido, $status,$idusuario, $idempresa) {
 	return mysqli_query($conexao, $query);
 }
 
+function buscaPedidosPendente($conexao, $idempresa) {
+	$query = "select count(*) as total from pedidos where idempresa = '{$idempresa}' and status = 'P'";
+	$resultado = mysqli_query($conexao, $query) or die(mysql_error());
+	return mysqli_fetch_assoc($resultado);
+}
+
+function buscaPedidosEntrega($conexao, $idempresa) {
+	$query = "select count(*) as total from pedidos where idempresa = '{$idempresa}' and status = 'E'";
+	$resultado = mysqli_query($conexao, $query) or die(mysql_error());
+	return mysqli_fetch_assoc($resultado);
+}
+

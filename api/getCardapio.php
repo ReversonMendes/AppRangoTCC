@@ -5,7 +5,7 @@
 
 	
 	$cardapios = array();
-	$resultado = mysqli_query($conexao, "select c.idempresa, c.idcardapio,nomeprato, razaosocial, fone, e.logo from cardapios as c, cardapio_ingredientes as ci, empresa as e where c.idcardapio = ci.idcardapio and c.idempresa = e.idempresa and c.flagativo = true group by c.idcardapio");
+	$resultado = mysqli_query($conexao, "select c.idempresa, c.idcardapio,nomeprato, razaosocial, fone, e.logo from cardapios as c, cardapio_ingredientes as ci, empresa as e where c.idcardapio = ci.idcardapio and c.idempresa = e.idempresa and c.flagativo = true and c.flagexcluido = false group by c.idcardapio");
 	while($cardapio = mysqli_fetch_assoc($resultado)) {
 		array_push($cardapios, $cardapio);
 	}

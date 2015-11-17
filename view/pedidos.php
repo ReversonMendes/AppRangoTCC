@@ -39,7 +39,7 @@
                              <th>Pagamento</th>
                              <th>Status</th>
                              <th>Alterar</th>
-                             <th>Excluir</th>
+                             <th>Imprimir</th>
                           </tr>
                        </thead>
                        <?php
@@ -87,7 +87,7 @@
                              <td align="center">
                                   <form action="../model/imprimir_pedidos.php" method="post">
                                     <input type="hidden" name="id" value="<?= $pedido['idpedido'] ?>">
-                                      <button type="submit" class="btn btn-sm" id="excluir">
+                                      <button type="submit" class="btn btn-sm" id="imprimir">
                                           <i class="fa  fa-print"></i>
                                        </button>
                                   </form>

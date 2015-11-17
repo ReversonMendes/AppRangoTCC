@@ -18,7 +18,7 @@
                         </div>
                         <div class="form-group">
                            <label>Email</label>
-                           <input class="form-control" type="email" name="email" required placeholder="Informe um endereço de Email válido">
+                           <input class="form-control" type="email" id="email" name="email" required placeholder="Informe um endereço de Email válido">
                         </div>
                         <div class="form-group">
                            <label>Usuário</label>
@@ -26,11 +26,11 @@
                         </div>
                         <div class="form-group">
                            <label>Senha</label>
-                           <input class="form-control" type="password" name="senha" required>
+                           <input class="form-control" type="password" id="senha" name="senha" required>
                         </div>
                         <div class="form-group">
                            <label>Confirmar senha</label>
-                           <input class="form-control" type="password" name="confirmasenha" required>
+                           <input class="form-control" type="password" id="confirmasenha" name="confirmasenha" required>
                         </div>
                         <div class="form-group">
                           <button type="submit" class="btn btn-lg btn-success btn-block">Gravar</button>
@@ -51,7 +51,10 @@
         $('#form').validate({
       
             rules:{
-              usuario: {
+                nome: {
+                    required: true
+                },
+                usuario: {
                     required: true
                 },
                 senha: {
@@ -61,10 +64,17 @@
                     required: true,
                     equalTo: "#senha"
                 },
+                email:{
+                  email: true,
+                  required: true
+                }
         
       },
         
             messages:{
+                nome: {
+                    required: "O campo nome é obrigatório."
+                },
                 usuario: {
                     required: "O campo usuario é obrigatório."
                 },
@@ -76,6 +86,10 @@
                     required: "O campo confirmação de senha é obrigatório.",
                     equalTo: "O campo confirmação de senha deve ser idêntico ao campo senha."
                 },
+                email:{
+                  email: "Por favor digite um email válido.",
+                  required: "O campo email é obrigatório"
+                }
         
       },
  

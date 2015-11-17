@@ -43,20 +43,20 @@
 	             ?>
 	         </td>
 	         <td align="center">
-	         <!-- Se já foi mostra botão para despublicar -->
+	         <!-- Se não foi mostra botão para publicar -->
 	         <?php if($cardapio['flagativo']) { ?>
 	         	<form action="../model/publicar_cardapio.php?acao=0" method="post">
 	                <input type="hidden" name="idcardapio" value="<?= $cardapio['idcardapio'] ?>">
-	                  <button type="submit" class="btn btn-danger btn-sm" id="excluir">
-	                      <i class="fa fa-minus"></i>
+	                  <button type="submit" class="btn btn-success btn-sm" id="excluir">
+	                      <i class="fa fa-check"></i>
 	                   </button>
 	            </form>
 	         <?php } else { ?>
-	         <!-- Senão mostra para publicar -->
+	         <!-- Senão mostra para despublicar -->
 	              <form action="../model/publicar_cardapio.php?acao=1" method="post">
 	                <input type="hidden" name="idcardapio" value="<?= $cardapio['idcardapio'] ?>">
-	                  <button type="submit" class="btn btn-success btn-sm" id="excluir">
-	                      <i class="fa fa-check"></i>
+	                  <button type="submit" class="btn btn-danger btn-sm" id="excluir">
+	                      <i class="fa fa-minus"></i>
 	                   </button>
 	              </form>
 	         <?php } ?>

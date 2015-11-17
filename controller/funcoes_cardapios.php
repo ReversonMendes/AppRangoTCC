@@ -2,7 +2,7 @@
 
 function listaCardapios($conexao, $idempresa) {
 	$cardapios = array();
-	$resultado = mysqli_query($conexao, "select * from cardapios where idempresa = '{$idempresa}'");
+	$resultado = mysqli_query($conexao, "select * from cardapios where idempresa = '{$idempresa}' and flagexcluido = false");
 	while($cardapio = mysqli_fetch_assoc($resultado)) {
 		array_push($cardapios, $cardapio);
 	}
@@ -67,7 +67,7 @@ function buscaCardapios($conexao, $id,$idempresa) {
 
 function buscaAllCardapios($conexao, $idempresa) {
 	$cardapios = array();
-	$resultado = mysqli_query($conexao, "select * from cardapios where idempresa = '{$idempresa}'");
+	$resultado = mysqli_query($conexao, "select * from cardapios where idempresa = '{$idempresa}' and flagexcluido = false");
 	while($cardapio = mysqli_fetch_assoc($resultado)) {
 		array_push($cardapios, $cardapio);
 	}
@@ -84,13 +84,10 @@ function buscaIngredientes($conexao, $id,$idempresa) {
 	return $ingredientes;
 }
 
+
 function excluirCardapios($conexao, $id) {
-	if(mysqli_query($conexao, "delete from cardapio_ingredientes where idcardapio = {$id}")){
-		$query = "delete from cardapios where idcardapio = {$id}";
-		return mysqli_query($conexao, $query);
-	}else{
-		return false;
-	}
+	$query = "update cardapios set flagexcluido = true and flagativo = false where idcardapio = {$id}";
+	return mysqli_query($conexao, $query);
 }
 
 function excluirIngredientes($conexao, $idcardapio,$idempresa ) {
@@ -99,7 +96,7 @@ function excluirIngredientes($conexao, $idcardapio,$idempresa ) {
 }
 
 function validaPublicacao($conexao,$idempresa){
-	$query = "select count(*)  as total from cardapios where flagativo = true and idempresa = {$idempresa}";
+	$query = "select count(*)  as total from cardapios where flagativo = true and idempresa = {$idempresa} and flagexcluido = false";
 	$resultado = mysqli_query($conexao, $query) or die(mysql_error());
 	return mysqli_fetch_assoc($resultado);
 }

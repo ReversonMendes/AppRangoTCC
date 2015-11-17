@@ -16,9 +16,6 @@
         <li>
             <a href="perfil.php" data-toggle="tooltip" data-placement="bottom" title="Perfil do Usuário"><i class="fa fa-user fa-fw"></i> <?= usuarioLogado() ?></a>
         </li>
-        <li>
-            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Configuração"><i class="fa fa-gear fa-fw"></i></a>
-        </li>
         <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Sair</a>
         </li>
     </ul>
