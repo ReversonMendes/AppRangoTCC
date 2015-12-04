@@ -1,11 +1,14 @@
 </body>
 <script>
 $(document).ready(function(){
-	   $("#cep").mask("99.999-999");
+	$("#cep").mask("99.999-999");
        $("#cnpj").mask("99.999.999/9999-99");
+       $("#cpf").mask("999.999.999-99");
+       $("#tabcpf").mask("999.999.999-99");
+       
        $("#data").mask("99/99/9999");
        if($.browser.mozilla){
-       	$("#datanascimento").mask("99/99/9999");	
+              $("#datanascimento").mask("99/99/9999");	
        }
        $("#telefone").mask("(999)9999-9999");
        $("#valor").maskMoney({prefix:'R$ ', thousands:'.', decimal:',', symbolStay: true});

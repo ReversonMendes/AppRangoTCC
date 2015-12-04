@@ -40,7 +40,7 @@ if(isset($_FILES['arquivo']) || !empty($_FILES['arquivo'])) {
 			header("Location: ../view/perfil.php");
 		// Verifica o tamanho do arquivo enviado
 		} else if ($arqSize > $tamanhoPermitido) {
-			$_SESSION["Danger"] = "O tamanho do arquivo enviado é maior que o limite!";
+			$_SESSION["Danger"] = "O tamanho do arquivo enviado é maior que o limite (500Kb)!";
 			header("Location: ../view/perfil.php");
 		// Não houveram erros, move o arquivo
 		} else {
@@ -74,17 +74,17 @@ if(isset($_FILES['arquivo']) || !empty($_FILES['arquivo'])) {
 		header("Location: ../view/perfil.php");
 		die();
 	}
-}
-
+}else{
 if($id > 0){
-	if(alteraUsuario($conexao, $id, $nome,$datanascimento, $email)) {
-		$_SESSION["Success"] = "Dados alterado com sucesso!";
-		header("Location: ../view/perfil.php");
-	}
-	 else {
-		$erro = mysqli_error($conexao);
-		$_SESSION["Danger"] = "Os dados não foram alterado. erro:".$erro;
-		header("Location: ../view/perfil.php");
+		if(alteraUsuario($conexao, $id, $nome,$datanascimento, $email)) {
+			$_SESSION["Success"] = "Dados alterado com sucesso!";
+			header("Location: ../view/perfil.php");
+		}
+		 else {
+			$erro = mysqli_error($conexao);
+			$_SESSION["Danger"] = "Os dados não foram alterado. erro:".$erro;
+			header("Location: ../view/perfil.php");
+		}
 	}
 }
 ?>

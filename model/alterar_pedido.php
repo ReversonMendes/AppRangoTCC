@@ -11,6 +11,8 @@
     <?php
        $idempresa = buscaIdUsuario($conexao, usuarioLogado());;
        $pedidoAlt = buscaPedido($conexao, $id,$idempresa['idempresa']);
+       $entregadores = buscaEntregadores($conexao,$idempresa['idempresa']);
+       $EntregadordoPedido = validaEntrega($conexao,$id,$idempresa['idempresa']);
     ?>
 	<table class="table">
 		<tr>
@@ -21,7 +23,7 @@
 	     	<td><label>Nome Cliente: </label><?= $pedidoAlt['nomecliente'] ?></td>
 	    </tr>
 	     <tr>
-	    	<td><label>Prato escolhido: </label><?= $pedidoAlt['nomeprato'] ?></td>
+	    	<td><label>Prato Escolhido: </label><?= $pedidoAlt['nomeprato'] ?></td>
 	     </tr>
 	     <tr>
 	     	<td><label>Quantidade: </label> <?= $pedidoAlt['quantidade'] ?></td>
@@ -39,7 +41,7 @@
 	     	<td>
 		         <label>Status</label>
 		      <!-- pendente aceito fazendo finalizado em entrega -->
-				<select class="form-control" name="status">
+				<select class="form-control" id="status" name="status">
 					<option value="P" <?=$pedidoAlt['status'] == 'P' ? 'selected' : ''?>>Pendente</option>
 					<option value="A" <?=$pedidoAlt['status'] == 'A' ? 'selected' : ''?>>Aceito</option>
 					<option value="F" <?=$pedidoAlt['status'] == 'F' ? 'selected' : ''?>>Finalizado</option>
@@ -48,6 +50,22 @@
 				</select>
 		  	</td>
 	     </tr>
+	     <tr id="selectentregador">
+	     	<div >
+	     	<td >
+	     		<label>Entregador</label>
+	     		<select name="entregador_id" class="form-control">
+				<?php foreach($entregadores as $entregador) : 
+					$esseEhoEntregador = $EntregadordoPedido['identregador'] == $entregador['identregador'];
+					$selecao = $esseEhoEntregador ? "selected='selected'" : "";?>
+						<option value="<?=$entregador['identregador']?>" <?=$selecao?>>
+								<?=$entregador['nomeentregador']?>
+						</option>
+				<?php endforeach ?>
+				</select>
+	     	</td>
+	     	</div>
+	     </tr>
 		<tr>
 			<td>
 				<button class="btn btn-info" type="submit">Gravar</button>
@@ -55,3 +73,18 @@
 		</tr>
 	</table>
 </form> 
+<script>
+	$(document).ready(function(){
+		if($('#status').val() != 'E') {
+           $('#selectentregador').hide(); 
+        }
+
+        $('#status').change(function(){
+          if($('#status').val() == 'E') {
+              $('#selectentregador').show(); 
+          } else {
+              $('#selectentregador').hide(); 
+          } 
+        });
+     });
+</script>

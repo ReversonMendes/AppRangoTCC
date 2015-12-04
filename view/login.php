@@ -2,15 +2,15 @@
     require_once("cabecalho.php");
 ?>
 
-<!--<style>
+<style>
 body {
-    background-image: url('../img/background.png');
+    background-image: url('../img/background.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
     background-size: 100% 100%;
 }
-</style> -->
+</style> 
 
     <div class="container">
         <div class="row">
@@ -42,9 +42,9 @@ body {
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-md-offset-4">
-             <h3>Site em construção entre em contato: reversondv@gmail.com</h3>
-            </div>
+            <!-- <div class="col-md-4 col-md-offset-4"> -->
+             <!-- <h3>Site em construção entre em contato: reversondv@gmail.com</h3> -->
+            <!-- </div> -->
         </div>
     </div>
 </body>

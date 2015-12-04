@@ -51,7 +51,10 @@
     <script src="../js/marmita.js"></script>
 
     <script src="../js/jquery.simplePagination.js"></script>
-
+    
+    <script src="../js/morris.min.js"></script>
+    <script src="../js/raphael-min.js"></script>
+    <link href="../css/morris.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 

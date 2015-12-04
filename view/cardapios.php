@@ -4,6 +4,7 @@
   require_once($_SERVER['DOCUMENT_ROOT']."/controller/conecta.php");
   require_once($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_cardapios.php");
   require_once($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_login.php");
+  verificaUsuario() 
 ?>
     <div id="wrapper">
         <div id="page-wrapper">  

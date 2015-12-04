@@ -6,6 +6,7 @@
     require_once($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_empresa.php");
     require_once($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_login.php");
     require_once("mostra_alerta.php")
+    verificaUsuario() 
 ?>
 <div id="page-wrapper">
    <div class="row">
@@ -31,7 +32,7 @@
         <div class="panel panel-info">
           <div class="panel-heading">Meus dados</div>
           <div class="panel-body">
-            <form id="formUser" role="form" action="../model/valida_usuario.php" method="post">
+            <form id="formUser" role="form" action="../model/valida_usuario.php" method="post" autocomplete="off">
                  <div class="form-group">
                        <input type="hidden" name="id" value="<?=$usuario['idusuario']?>">
                  </div>
@@ -62,11 +63,11 @@
                   </div>
                   <div class="form-group">
                      <label>Nova Senha</label>
-                     <input class="form-control" type="password" id="novasenha" name="novasenha" value="" required>
+                     <input class="form-control" type="password" autocomplete="off" id="novasenha" name="novasenha" value="" >
                   </div>
                   <div class="form-group">
                      <label>Confirmar Senha</label>
-                     <input class="form-control" type="password" id="confirmasenha" name="confirmasenha" value="" required>
+                     <input class="form-control" type="password" id="confirmasenha" name="confirmasenha" value="">
                   </div>
                 </div>
               </form>

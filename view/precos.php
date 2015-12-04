@@ -5,6 +5,7 @@
   require_once($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_precos.php");
   require_once($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_formapagamento.php");
   setlocale(LC_MONETARY,"pt_BR", "ptb");
+  verificaUsuario() 
 ?>
     <div id="wrapper">
         <div id="page-wrapper">  

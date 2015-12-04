@@ -4,6 +4,7 @@
   require_once($_SERVER['DOCUMENT_ROOT']."/controller/conecta.php");
   require_once($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_pedidos.php");
   require_once($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_login.php");
+  verificaUsuario()
 ?>
 <div id="page-wrapper">
     <div class="row">
@@ -137,10 +138,9 @@
 </div>
 <!-- /.row -->
 </div>
-    <script>
+<script>
  $(function(){
       
-     
       $('form').submit(function(e){ e.preventDefault(); });
       
       $('#pesquisar').keydown(function(){
@@ -193,7 +193,6 @@
           console.log($(this).children().eq(7).text());
           switch($(this).children().eq(7).text())
           {
-           
           case 'Pendente':
           $(this).prop('class','info');
           break;
@@ -213,7 +212,6 @@
            
           };
       });
-
     });
     </script>
 
