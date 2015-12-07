@@ -5,7 +5,7 @@
     require_once($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_usuario.php");
     require_once($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_empresa.php");
     require_once($_SERVER['DOCUMENT_ROOT']."/controller/funcoes_login.php");
-    require_once("mostra_alerta.php")
+    require_once("mostra_alerta.php");
     verificaUsuario() 
 ?>
 <div id="page-wrapper">
